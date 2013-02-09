@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django_hstore import hstore
 import urllib2
 import json
+from pymongo import MongoClient
 
 class Lender(models.Model):
 	name = models.CharField(max_length=256)
@@ -15,10 +16,14 @@ class Lender(models.Model):
 	def __unicode__(self):
 		return self.name
 
-	def fetch_list(self):
+	def fetch_list_from_openlibrary(self):
 		url = "http://openlibrary.org/people/umbrella_library/lists/%s/seeds.json" % self.list_id #OL25396L
 		raw = urllib2.urlopen(url).read()
 		data = json.loads(raw)
+		list_of_books = []
+		connection = MongoClient()
+		db = connection.ol
+		books = db.books
 		for book in data['entries']:
 			#ol_id = book['url'].replace("/books/", "").replace("/works/", "")
 			#b = Book(ol_id=ol_id)
@@ -26,21 +31,28 @@ class Lender(models.Model):
 			#book_url = "http://openlibrary.org/api/books?bibkeys=OL:%s" % ol_id
 			print book_data_url
 			book_data = json.loads(urllib2.urlopen(book_data_url).read())
-            b = Book()
-            b.ol_id = book['url']
-			b.data = book_data
-			b.save()
-			self.books.add(b)
-			self.save()
-				
+			mongo_book = books.find_one({"key":book_data['key']})
+			print str(mongo_book)
+			#mongo_id = mongo_book['_id'] if mongo_book else books.insert(book_data)
+			mongo_id = mongo_book and mongo_book['_id'] or books.insert(book_data)
+			book,created = Book.objects.get_or_create(mongo_id=mongo_id)
+			#if not created:
+			#	mongo_id = book.mongo_id
+			#else:
+			book.save()
+			lb = LenderBook(lender=self,book=book,status=1)
+			# TODO figure out status
+			lb.save()
+		
+		
 
 class Book(models.Model):
-	ol_id = models.CharField(max_length=128, unique=True, db_index=True)    
-	data = hstore.DictionaryField()
-    objects = hstore.HStoreManager()
+	ol_id = models.CharField(max_length=128, unique=True, db_index=True,blank=True,null=True)    
+	mongo_id = models.CharField(max_length=128, unique=True, db_index=True)    
 	
 	def __unicode__(self):
 		return self.ol_id
+
 
 STATUS_CHOICES = (
 	(0, 'avaialble to borrow'),
