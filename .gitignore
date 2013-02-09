@@ -1,0 +1,9 @@
+*.pyc
+*~
+bin/
+lib/
+include/
+*.sw*
+local/
+share/
+tmp/

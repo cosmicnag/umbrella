@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+        <script>
+OL_URL = "http://openlibrary.org"
+$(document).ready(function() {
+    $.getJSON("proxy.php?url=http://openlibrary.org/people/umbrella_library/lists/OL25396L/seeds.json", function(data) {
+        console.log(data);
+        data.entries.forEach(function(entry, index) {
+            var $wrapper = $('<div />').appendTo('body');            
+            var $link = $('<a />').attr("href", OL_URL + entry.full_url).text(entry.title).appendTo($wrapper);
+            
+        });
+    });
+
+
+});
+
+        </script>
+
+    </head>
+    <body>
+
+    </body>
+
+
+</html>
