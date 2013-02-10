@@ -2,6 +2,7 @@
 from models import *
 from ox.django.shortcuts import render_to_json_response
 from pymongo import MongoClient
+from django.shortcuts import render_to_response
 
 def lenders(request):
 	if request.method == 'GET':
@@ -21,3 +22,6 @@ def books(request):
 		for book in book_list:
 			book['_id']=str(book['_id'])
 		return render_to_json_response(book_list)
+
+def index(request):
+	return render_to_response('index.jade')
