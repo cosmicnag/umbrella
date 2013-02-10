@@ -3,3 +3,5 @@ django_hstore
 south
 django_extensions
 django-debug-toolbar
+pyjade
+pymongo
