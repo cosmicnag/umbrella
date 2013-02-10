@@ -24,21 +24,26 @@ class Lender(models.Model):
 		connection = MongoClient()
 		db = connection.ol
 		books = db.books
+		authors = db.authors
 		for book in data['entries']:
 			#ol_id = book['url'].replace("/books/", "").replace("/works/", "")
 			#b = Book(ol_id=ol_id)
 			book_data_url = "http://openlibrary.org%s.json" % book['url']
 			#book_url = "http://openlibrary.org/api/books?bibkeys=OL:%s" % ol_id
-			print book_data_url
 			book_data = json.loads(urllib2.urlopen(book_data_url).read())
+			if book_data.has_key('authors'):
+				print book_data['authors']
+				author_keys = [a['author']['key'] for a in book_data['authors'] if a.get('author',None)]	
+				for author_key in author_keys:
+					author_endpoint = "http://openlibrary.org" + author_key + ".json"
+					print author_endpoint
+					author_data = json.loads(urllib2.urlopen(author_endpoint).read())
+					mongo_author = authors.find_one({"key":author_data['key']})
+					author_id = mongo_author and mongo_author['_id'] or authors.insert(author_data)
+					print author_id
 			mongo_book = books.find_one({"key":book_data['key']})
-			print str(mongo_book)
-			#mongo_id = mongo_book['_id'] if mongo_book else books.insert(book_data)
 			mongo_id = mongo_book and mongo_book['_id'] or books.insert(book_data)
 			book,created = Book.objects.get_or_create(mongo_id=mongo_id)
-			#if not created:
-			#	mongo_id = book.mongo_id
-			#else:
 			book.save()
 			lb = LenderBook(lender=self,book=book,status=1)
 			# TODO figure out status
