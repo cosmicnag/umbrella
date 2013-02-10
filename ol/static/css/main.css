@@ -159,6 +159,9 @@ textarea {
 	padding: 20px;
 }
 
+.browse .col25:nth-of-type(4n+1) {
+	clear: both;
+}
 .contentVerticalHeadings {
 	font-size: 160%;
 	position: absolute;
