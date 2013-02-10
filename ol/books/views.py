@@ -1,6 +1,7 @@
 # Create your views here.
 from models import *
 from ox.django.shortcuts import render_to_json_response
+from pymongo import MongoClient
 
 def lenders(request):
 	if request.method == 'GET':
@@ -8,3 +9,15 @@ def lenders(request):
 		return render_to_json_response(lenders,status=200)
 	return render_to_json_response([],status=501)
 	
+def books(request):
+	if request.method == 'GET':
+		sort = request.GET.get('sort','-_id')
+		by,what = (sort[0],sort[1:],)
+		limit = request.GET.get('limit',8)
+		connection = MongoClient()
+		db = connection.ol
+		books = db.books
+		book_list = list(books.find().sort(what,direction=int(by+"1")).limit(8))
+		for book in book_list:
+			book['_id']=str(book['_id'])
+		return render_to_json_response(book_list)
