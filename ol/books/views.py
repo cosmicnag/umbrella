@@ -21,7 +21,7 @@ def books(request):
 		book_list = list(books.find().sort(what,direction=int(by+"1")).limit(8))
 		for book in book_list:
 			book['_id']=str(book['_id'])
-		return render_to_json_response(book_list)
+		return render_to_json_response({'items':book_list})
 
 def index(request):
 	return render_to_response('index.jade')
