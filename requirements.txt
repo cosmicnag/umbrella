@@ -5,3 +5,4 @@ django_extensions
 django-debug-toolbar
 pyjade
 pymongo
+ox
