@@ -15,7 +15,3 @@ define ['Backbone','cs!app/models/book', 'cs!app/views/booksview', 'backbone_pag
     parse: (res) ->
       console.log res
       res.items
-    initialize: () ->
-      booksview = new BooksView
-        collection: @
-      @on "reset", booksview.render
