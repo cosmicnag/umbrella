@@ -1,8 +1,9 @@
-define ['Backbone','cs!app/models/book','backbone_paginator'],(Backbone,Book) ->
+define ['Backbone','cs!app/models/book', 'cs!app/views/booksview', 'backbone_paginator'],(Backbone,Book,BooksView) ->
   class Books extends Backbone.Paginator.requestPager
     model: Book
     paginator_core:
       type: 'GET'
+      dataType: 'json'
       url: '/api/books?'
     paginator_ui:
       firstPage:0

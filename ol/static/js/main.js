@@ -9,7 +9,7 @@ require.config({
         // Backbone.js library
         Backbone:'libs/backbone',
         'coffee-script':'libs/coffee-script',
-		backbone_paginator: 'libs/backbone-paginator-min',
+		backbone_paginator: 'libs/backbone.paginator',
 		cs: 'libs/cs',
         // jQuery
         jquery:'libs/jquery-1.8.3.min'
