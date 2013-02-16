@@ -3,7 +3,7 @@ define ['Backbone','cs!app/models/book','cs!app/collections/books','jquery','cs!
     className: 'browse'
     initialize: ->
       _.bindAll @,'render'
-      #@collection.bind 'reset',@render
+      @collection.on 'sync',@render
     render: ->
       @collection.each (book) =>
         console.log book
@@ -11,4 +11,5 @@ define ['Backbone','cs!app/models/book','cs!app/collections/books','jquery','cs!
           model:book
           collection:@collection
         @$el.append view.render().el
+        $('#content').empty().append(@$el)
       @
