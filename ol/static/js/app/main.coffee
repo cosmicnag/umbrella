@@ -4,6 +4,5 @@ define ['Backbone','domReady','cs!app/models/book','cs!app/collections/books','c
     books = new Books
     booksview = new BooksView
        collection:books
-    books.on "reset", booksview.render
     books.fetch()
   
