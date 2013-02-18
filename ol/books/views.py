@@ -36,8 +36,8 @@ def books(request):
 #        if publisher:
 #            find['publishers'] = re.compile(publisher, re.IGNORECASE)
         count = books.find(find).count()
-        pages = int(math.ceil(count / per_page + .0))
-        if page > pages:
+        pages = int(math.ceil(count / (per_page + .0)))
+        if page > pages and pages != 0:
             page = pages        
         skip = (page - 1) * per_page
                 
