@@ -5,6 +5,7 @@ define ['Backbone','cs!app/models/book','cs!app/collections/books','jquery','cs!
       _.bindAll @,'render'
       @collection.on 'reset',@render
     render: ->
+      @$el.empty()
       @collection.each (book) =>
         console.log book
         view = new BookView

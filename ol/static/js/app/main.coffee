@@ -5,4 +5,9 @@ define ['Backbone','domReady','cs!app/models/book','cs!app/collections/books','c
     booksview = new BooksView
        collection:books
     books.fetch()
+    $('#search').on "submit", (e)->
+        e.preventDefault()
+        books.fetch()
+        
+        
   

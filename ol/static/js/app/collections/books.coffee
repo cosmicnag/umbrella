@@ -1,4 +1,4 @@
-define ['Backbone','cs!app/models/book', 'cs!app/views/booksview', 'backbone_paginator'],(Backbone,Book,BooksView) ->
+define ['Backbone','cs!app/models/book', 'cs!app/views/booksview', 'jquery', 'backbone_paginator'],(Backbone,Book,BooksView,$) ->
   class Books extends Backbone.Paginator.requestPager
     model: Book
     paginator_core:
@@ -6,12 +6,18 @@ define ['Backbone','cs!app/models/book', 'cs!app/views/booksview', 'backbone_pag
       dataType: 'json'
       url: '/api/books?'
     paginator_ui:
-      firstPage:0
-      currentPage:0
-      perPage : 4
+      firstPage:1
+      currentPage:1
+      perPage : 8
       totalPages: 5
     server_api:
-      'sort' : '-_id'
+      sort : '-_id',
+      page: () ->
+        @currentPage      
+      q: () ->
+        $('#q').val()
     parse: (res) ->
+      @totalPages = res.pages
+      @currentPage = res.page
       console.log res
       res.items
