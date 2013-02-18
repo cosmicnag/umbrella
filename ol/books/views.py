@@ -3,8 +3,12 @@ from models import *
 from ox.django.shortcuts import render_to_json_response
 from pymongo import MongoClient
 from django.shortcuts import render_to_response
+from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate
+from django.views.decorators.csrf import csrf_exempt
 import re
 import math
+
 
 def lenders(request):
     if request.method == 'GET':
@@ -13,6 +17,43 @@ def lenders(request):
     return render_to_json_response([],status=501)
 
 
+@csrf_exempt
+def signup(request):
+    username = request.POST.get("username", None)
+    password = request.POST.get("password", None)
+    password2 = request.POST.get("password2", None)
+    email = request.POST.get("email", None)
+    first_name = request.POST.get("first_name", None)
+    last_name = request.POST.get("last_name", None)
+    if not username or not password or not password2:
+        return render_to_json_response({'error': 'insufficient data'})
+    if User.objects.filter(username=username).count() > 0:
+        return render_to_json_response({'error': 'Username exists'})
+    if password != password2:
+        return render_to_json_response({'error': 'Passwords do not match'})
+    u = User()
+    u.username = username
+    u.set_password(password)
+    if email:
+        u.email = email
+    if first_name:
+        u.first_name = first_name
+    if last_name:
+        u.last_name = last_name
+    u.save()
+    login(request, u)
+    return render_to_json_response({'success': 'User logged in'})
+
+
+@csrf_exempt
+def signin(request):
+    username = request.POST.get("username", "")
+    password = request.POST.get("password", "")
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return render_to_json_response({'success': 'User logged in'})
+    return render_to_json_response({'error': 'Username / password do not match'})
 
 	
 def books(request):
