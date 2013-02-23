@@ -1,4 +1,4 @@
-define ['Backbone'],(Backbone) ->
+define ['backbone'],(Backbone) ->
   class Book extends Backbone.Model
     idAttribute: "_id"
     getEncodedTitle: () ->

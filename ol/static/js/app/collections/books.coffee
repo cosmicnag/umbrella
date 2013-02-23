@@ -1,4 +1,4 @@
-define ['Backbone','cs!app/models/book', 'cs!app/views/booksview', 'jquery', 'backbone_paginator'],(Backbone,Book,BooksView,$) ->
+define ['backbone','cs!app/models/book', 'cs!app/views/booksview', 'jquery', 'backbone_paginator'],(Backbone,Book,BooksView,$) ->
   class Books extends Backbone.Paginator.requestPager
     model: Book
     paginator_core:

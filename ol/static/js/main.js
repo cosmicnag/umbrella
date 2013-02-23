@@ -7,20 +7,25 @@ require.config({
         // underscore library
         underscore:'libs/underscore',
         // Backbone.js library
-        Backbone:'libs/backbone',
+        backbone:'libs/backbone',
         'coffee-script':'libs/coffee-script',
 		backbone_paginator: 'libs/backbone.paginator',
+		marionette: 'libs/backbone.marionette.min',
 		cs: 'libs/cs',
         // jQuery
         jquery:'libs/jquery-1.8.3.min'
     },
     shim:{
-        Backbone:{
+        backbone:{
             deps:['underscore', 'jquery'],
             exports:'Backbone'
         },
 		backbone_paginator : {
-			deps:['Backbone']
+			deps:['backbone']
+		},
+		marionette: {
+            deps:['backbone'],
+            exports: 'Marionette'	
 		},
         underscore:{
             exports:'_'

@@ -1,4 +1,4 @@
-define ['Backbone','cs!app/models/book','cs!app/collections/books','jquery','text!app/views/bookview.tpl'],(Backbone,Book,Books,$,template) ->
+define ['backbone','cs!app/models/book','cs!app/collections/books','jquery','text!app/views/bookview.tpl'],(Backbone,Book,Books,$,template) ->
   class BookView extends Backbone.View
     tagName: 'div'
     className: 'col25'

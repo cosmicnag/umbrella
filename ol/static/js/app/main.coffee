@@ -1,4 +1,4 @@
-define ['Backbone','domReady','cs!app/models/book','cs!app/collections/books','cs!app/views/booksview','jquery'],(Backbone,domReady,Book,Books,BooksView,$)->
+define ['backbone','domReady','cs!app/models/book','cs!app/collections/books','cs!app/views/booksview','jquery'],(Backbone,domReady,Book,Books,BooksView,$)->
   domReady ()->
     console.log "app initialized"
     books = new Books
