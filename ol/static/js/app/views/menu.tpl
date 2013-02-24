@@ -10,7 +10,7 @@
             </select>
             
             <div id="searchMenu">
-                <input type="" placeholder="Find"><span class="go">Go</span>
+                <input type="" id="querystring" placeholder="Find"><span class="go">Go</span>
                 <ul id="menu">
                     <li><a href="">About</a></li>
                     <li><a href="lenders.html">Lenders</a></li>

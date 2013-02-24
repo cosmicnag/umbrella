@@ -5,18 +5,18 @@ define ['marionette','tpl!app/views/bookgrid.tpl','tpl!app/views/booklist.tpl','
         className: 'col25'
         templateHelpers:
             get_image_url:()->
-              if @covers? then "http://covers.openlibrary.org/b/id/#{@covers[0]}-L.jpg" else "http://placehold.it/180x253&text=Asd"
+              if @covers? then "http://covers.openlibrary.org/b/id/#{@covers[0]}-L.jpg" else "http://placehold.it/180x253&text=#{@title}"
                 
     class BookListView extends Marionette.ItemView
         template: listtemplate
         templateHelpers:
             get_image_url:()->
-              if @covers? then "http://covers.openlibrary.org/b/id/#{@covers[0]}-L.jpg" else "http://placehold.it/180x253&text=Asd"
+              if @covers? then "http://covers.openlibrary.org/b/id/#{@covers[0]}-L.jpg" else "http://placehold.it/180x253&text=#{@title}"
     class BookDetailView extends Marionette.ItemView
         template: detailtemplate
         templateHelpers:
             get_image_url:()->
-              if @covers? then "http://covers.openlibrary.org/b/id/#{@covers[0]}-L.jpg" else "http://placehold.it/180x253&text=Asd"
+              if @covers? then "http://covers.openlibrary.org/b/id/#{@covers[0]}-L.jpg" else "http://placehold.it/180x253&text=#{@title}"
 
     class BooksView extends Marionette.CollectionView
         id: () ->

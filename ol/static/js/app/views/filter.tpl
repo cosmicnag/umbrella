@@ -1,22 +1,19 @@
 <div id="sortCollections">
-        <select name="" id="">
-            <option value="">Author</option>
-            <option value="">Graham Greene</option>
+        <select id="author">
+            <option value="all">All Authors</option>
         </select>
     
     
-        <select name="" id="">
-            <option value="">Genre</option>
-            <option value="">Graham Greene</option>
+        <select id="genre">
+            <option value="all">All Genres</option>
         </select>
     
     
-        <select name="" id="">
-            <option value="">Lender</option>
-            <option value="">Graham Greene</option>
+        <select id="lender">
+            <option value="all">All Lenders</option>
         </select>
 
-        <span class="reset"><!-- <img src="static/img/reset.png" alt="reset"> -->Reset</span> <!-- karen change this later  -->
+        <span class="reset" id="search">Search</span> <!-- karen change this later  -->
 
     <div class="clear"></div>
     </div> <!-- end sort collections  -->
@@ -24,12 +21,11 @@
 
 
 <div class="listGridView">
-<select style="width: 76px; position: absolute; opacity: 0; height: 20px; font-size: 14.4px;" name="" class="selectSort hasCustomSelect">
-    <option value=""></option>
-    <option value="">Newest</option>
-    <option value="">Oldest</option>
-    <option value="">A-Z</option>
-    <option value="">Z-A</option>
+<select id="sort" style="width: 76px; position: absolute; opacity: 0; height: 20px; font-size: 14.4px;" name="" class="selectSort hasCustomSelect">
+    <option value="-_id">Newest</option>
+    <option value="+_id">Oldest</option>
+    <option value="+title">A-Z</option>
+    <option value="-title">Z-A</option>
 </select><span style="display: inline-block;" class="customSelect mySelectBoxClass selectSort"><span style="width: 71px; display: inline-block;" class="customSelectInner">&nbsp;</span></span>
 
 <a href="#browseDetailsView" class="linkDetailsView">

@@ -110,8 +110,12 @@ def books(request):
 def get_filters_data(request):
     connection = MongoClient()
     db = connection.ol
-    authors = [{a['key']: a['name']} for a in db.authors.find({}, {'key': 1, 'name': 1})]
-    lenders = [{l.id: l.name} for l in Lender.objects.all()]
+    authors = {}
+    lenders = {}
+    for a in db.authors.find():
+        authors[a['key']]=a['name']
+    for l in Lender.objects.all():
+        lenders[l.id]=l.name
     genres = []
     for book in db.books.find({}, {'subjects': 1}): #TODO: FIXME
         if book.has_key('subjects'):

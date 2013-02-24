@@ -3,7 +3,10 @@ define ['backbone','cs!app/models/book', 'cs!app/views/booksview', 'jquery', 'ba
     model: Book
     initialize: (options) ->
         super()
-        @server_api.q = options.querystring
+        @server_api.q = (if options.query != '' then options.query else null)
+        @server_api.author = (if options.author != 'all' then options.author else null)
+        @server_api.genre = (if options.genre != 'all' then options.genre else null)
+        @server_api.lender = (if options.lender != 'all' then options.lender else null)
         @server_api.sort = options.sort
     paginator_core:
       type: 'GET'
@@ -20,5 +23,4 @@ define ['backbone','cs!app/models/book', 'cs!app/views/booksview', 'jquery', 'ba
     parse: (res) ->
       @totalPages = res.pages
       @currentPage = res.page
-      console.log res
       res.items
