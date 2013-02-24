@@ -5,4 +5,5 @@ urlpatterns = patterns('books.views',
     url(r'^books', 'books'),
     url(r'^signin', 'signin'),
     url(r'^signup', 'signup'),
+    url(r'^filters', 'get_filters_data'),
 )

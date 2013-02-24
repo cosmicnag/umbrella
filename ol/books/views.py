@@ -61,7 +61,8 @@ def books(request):
         sort = request.GET.get('sort','-_id')
         by,what = (sort[0],sort[1:],)
         limit = request.GET.get('limit',8)
-        publisher = request.GET.get("publisher", None)
+        author = request.GET.get("author", None)
+        genre = request.GET.get("genre", None)
         page = int(request.GET.get("page", "1"))
         per_page = int(request.GET.get("per_page", "8"))
         q = request.GET.get("q", None)
@@ -81,8 +82,10 @@ def books(request):
                 {'subjects': regex},
                 {'authors.author.key': { '$in': authors }} 
             ]
-#        if publisher:
-#            find['publishers'] = re.compile(publisher, re.IGNORECASE)
+        if author:
+            find['authors.author.key'] = author
+        if genre:
+            find['subjects'] = genre
         count = books.find(find).count()
         pages = int(math.ceil(count / (per_page + .0)))
         if page > pages and pages != 0:
@@ -104,6 +107,20 @@ def books(request):
             'page': page
         })
 
+def get_filters_data(request):
+    connection = MongoClient()
+    db = connection.ol
+    authors = [{a['key']: a['name']} for a in db.authors.find({}, {'key': 1, 'name': 1})]
+    lenders = [{l.id: l.name} for l in Lender.objects.all()]
+    genres = []
+    for book in db.books.find({}, {'subjects': 1}): #TODO: FIXME
+        if book.has_key('subjects'):
+            for subject in book['subjects']:
+                genres.append(subject) 
+    set = {}
+    map(set.__setitem__, genres, [])
+    unique_genres = set.keys()
+    return render_to_json_response({'authors': authors, 'lenders': lenders, 'genres': unique_genres}) 
 
 def index(request):
     return render_to_response('index.jade')
