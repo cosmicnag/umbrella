@@ -1,41 +1,30 @@
 !!! 5
 html(lang='en')
-head
-    meta(charset='utf-8')
-    title ADD HERE
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    meta(name='keywords', content='PLACE KEYWORDS HERE – they should appear in site content also')
-    meta(name='title', content='CHANGE AS PER TITLE OF PAGE prefixed with company name')
-    meta(name='description', content='ADD DETAILS HERE')
-    link(rel='shortcut icon', href='/static/img/favicon.ico')
-    link(rel='stylesheet', href='/static/css/reset.css', type='text/css')
-    link(href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Libre+Baskerville', rel='stylesheet', type='text/css')
-    link(rel='stylesheet', href='/static/css/main.css', type='text/css')
-    link(rel='stylesheet', href='/static/css/home.css', type='text/css')
-body
-  #wrapper
-    .col25
-      #logo Lib
-      form#search(action='')
-        input(name='q', id='q', type='', placeholder='Find')
-      ul#menu
-        li
-          a(href='') About
-        li
-          a(href='') Lend
-        li
-          a(href='') Borrow
-        li
-          a(href='') Collections
-    .col75
-      p(style='font-family: \'Open Sans Condensed\'; float: right;')
-        span(style='background: khaki; padding: 4px;') Sign-up
-        span(style='font-size: 130%; line-height: 1.2;') /
-        span(style='background: lightblue; padding: 4px;') Sign-In
-      #content
-    .clear
-    div
-      noscript
-        strong You need Javascript to run this page
-    script(type='text/javascript', data-main='/static/js/main',src='/static/js/libs/require.js')
-
+    head
+        meta(charset='utf-8')
+        title ADD HERE
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        meta(name='keywords', content='')
+        meta(name='title', content='')
+        meta(name='description', content='')
+        link(rel='shortcut icon', href='/static/img/favicon.ico')
+        link(rel='stylesheet', href='/static/css/reset.css', type='text/css')
+        link(href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed|Open+Sans+Condensed:300|Libre+Baskerville', rel='stylesheet', type='text/css')
+        link(rel='stylesheet', href='/static/css/lightbox.css', type='text/css')
+        link(rel='stylesheet', href='/static/css/main.css', type='text/css')
+    body
+        #wrapper
+          #menuBlock
+          #contentBlock
+          .clear
+          div
+            .overlay
+              .lightBoxBlock
+                .lightBox
+                  .lightBoxContent
+                  a.closeLightBox(href='')
+                  a.nextLightBox(href='')
+                  a.prevLightBox(href='')
+            noscript
+              strong You need Javascript to run this page
+    script(data-main='/static/js/main',src='/static/js/libs/require.js')

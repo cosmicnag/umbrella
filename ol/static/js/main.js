@@ -12,6 +12,7 @@ require.config({
 		backbone_paginator: 'libs/backbone.paginator',
 		marionette: 'libs/backbone.marionette.min',
 		cs: 'libs/cs',
+        tpl: 'libs/tpl',
         // jQuery
         jquery:'libs/jquery-1.8.3.min'
     },
@@ -39,6 +40,8 @@ require.config({
     }
 });
 
-require(["cs!app/main"],function(){
-
+require(["cs!app/ol","domReady"],function(OL,domReady){
+   domReady ( function(){
+        OL.start();
+    }); 
 });
