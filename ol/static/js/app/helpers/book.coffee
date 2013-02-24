@@ -31,6 +31,7 @@ define ['cs!app/ol','cs!app/views/menu','cs!app/views/layouts/content','cs!app/v
                 sort: sort
             books.fetch {
                 success:(collection) =>
+                        
                     OL.content.currentView.books.show new BooksView({collection:books})
                 }
         getFilterData:()->

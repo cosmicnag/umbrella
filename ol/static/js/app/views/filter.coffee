@@ -18,11 +18,11 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','jquery',
             lender: '#lender'
             search: '#search'
             sort: '#sort'
+            #TODO grid/list
         events:
             'click #search': 'fireQuery'
         fireQuery: ()->
-            [author,genre,lender,sort] = [@ui.author.val(),@ui.genre.val(),@ui.lender.val(),@ui.sort.val()]
+            [author,genre,lender,sort] = [window.encodeURIComponent(@ui.author.val()),@ui.genre.val(),@ui.lender.val(),@ui.sort.val()]
             querystring = mediator.requests.request "querystring"
-            require ['cs!app/helpers/book'],(bookhelper) =>
-                bookhelper.query querystring,genre,author,lender,sort
+            mediator.commands.execute "firequery",querystring,genre,author,lender,sort
     FilterView

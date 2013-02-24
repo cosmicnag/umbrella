@@ -5,6 +5,6 @@ define ['marionette','cs!app/core/router','backbone'],(Marionette,OLRouter,Backb
         content: '#contentBlock'
     OL.addInitializer ()->
         console.log "init"
-        new OLRouter()
+        @router = new OLRouter()
         Backbone.history.start()
     OL
