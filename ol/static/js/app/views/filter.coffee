@@ -21,8 +21,17 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','jquery',
             #TODO grid/list
         events:
             'click #search': 'fireQuery'
+            'click #detailview' : 'showdetailview'
+            'click #listview' :'showlistview'
+            'click #gridview' : 'showgridview'
         fireQuery: ()->
             [author,genre,lender,sort] = [window.encodeURIComponent(@ui.author.val()),@ui.genre.val(),@ui.lender.val(),@ui.sort.val()]
             querystring = mediator.requests.request "querystring"
             mediator.commands.execute "firequery",querystring,genre,author,lender,sort
+        showdetailview:() ->
+            mediator.events.trigger "filters:view",'detail'
+        showlistview:() ->
+            mediator.events.trigger "filters:view",'list'
+        showgridview:() ->
+            mediator.events.trigger "filters:view",'grid'
     FilterView

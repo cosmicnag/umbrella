@@ -28,7 +28,7 @@
     <option value="-title">Z-A</option>
 </select><span style="display: inline-block;" class="customSelect mySelectBoxClass selectSort"><span style="width: 71px; display: inline-block;" class="customSelectInner">&nbsp;</span></span>
 
-<a href="#browseDetailsView" class="linkDetailsView">
+<a href="javascript:void(0);" id="detailview" class="linkDetailsView">
     
     <div></div>
     <div></div>
@@ -38,7 +38,7 @@
     <p class="tooltip">Detail View</p>
 </a>
 
-<a href="#browseListView" class="linkListView">
+<a href="javascript:void(0);" id="listview" class="linkListView">
     <div class="listView">
         <div></div>
         <div></div>
@@ -46,7 +46,7 @@
     </div>
 </a>  <!-- change this later  -->
 
-<a href="#browseGridView" class="linkGridView">
+<a href="javascript:void(0);" id="gridview" class="linkGridView">
     <div class="gridView">
         <div></div>
         <div></div>

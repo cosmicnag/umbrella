@@ -1,4 +1,4 @@
-define ['marionette','tpl!app/views/bookgrid.tpl','tpl!app/views/booklist.tpl','tpl!app/views/bookdetail.tpl'],(Marionette,gridtemplate,listtemplate,detailtemplate) ->
+define ['marionette','tpl!app/views/bookgrid.tpl','tpl!app/views/booklist.tpl','tpl!app/views/bookdetail.tpl','cs!app/core/mediator'],(Marionette,gridtemplate,listtemplate,detailtemplate,mediator) ->
 
     class BookGridView extends Marionette.ItemView
         template: gridtemplate
@@ -25,6 +25,10 @@ define ['marionette','tpl!app/views/bookgrid.tpl','tpl!app/views/booklist.tpl','
                 when "grid" then "browseGridView"
                 when "list" then "browseListView"
                 when "detail" then "browseDetailsView"
+        initialize: () ->
+            @listenTo mediator.events,"filters:view",(viewtype) =>
+                @attributes.view = viewtype
+                @render()
             
         itemView: @getItemView
         getItemView: (item)->
