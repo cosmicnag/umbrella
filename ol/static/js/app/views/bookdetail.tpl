@@ -1,6 +1,6 @@
 <div class="browseDetailEach">
                     <div class="col25">
-                        <img alt="" src="<%= get_image_url() %>">
+                        <img alt="" src="<%= image_url %>">
                     </div>
                     <div class="col75">
                         <div class="bookTitle"><strong><%= title %></strong></div>

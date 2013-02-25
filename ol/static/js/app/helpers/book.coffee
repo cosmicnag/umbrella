@@ -21,12 +21,13 @@ define ['cs!app/ol','cs!app/views/menu','cs!app/views/layouts/content','cs!app/v
 
         query:(query, genre, author, lender, sort)->
             @renderHome(false) if not @layoutrendered
-            books = new Books
+            books = new Books [],
                 query: query
                 genre: genre
                 author: author
                 lender: lender
                 sort: sort
+            
             books.fetch {
                 success:(collection) =>
                         

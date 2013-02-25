@@ -1,1 +1,1 @@
-<img src='<%= get_image_url()  %>' />
+<img src='<%= image_url  %>' />
