@@ -7,22 +7,20 @@ define ['cs!app/ol','cs!app/views/menu','cs!app/views/layouts/content','cs!app/v
     #Books = require 'cs!app/collections/books'
 
     class BookHelper
-
-        renderHome:()->
+        layoutrendered: false
+        renderHome:(defaults = true)->
+            return if @layoutrendered
             OL.menu.show new MenuView()
             contentlayout = new ContentLayout()
             OL.content.show contentlayout
             contentlayout.render()
             contentlayout.filter.show new FilterView()
-            initialbooks = new Books({query:'',sort:'-id'})
-            initialbooks.fetch {
-                success:(collection,response,options) =>
-                    contentlayout.books.show new BooksView({collection:collection})
-                }
+            @layoutrendered = true
+            @query '','all','all','all','-_id' if defaults
             @getFilterData()
 
         query:(query, genre, author, lender, sort)->
-            console.log query
+            @renderHome(false) if not @layoutrendered
             books = new Books
                 query: query
                 genre: genre
