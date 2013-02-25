@@ -35,6 +35,7 @@
     <div></div>
     <div></div>
     <div></div>
+    <div></div>
     <p class="tooltip">Detail View</p>
 </a>
 
