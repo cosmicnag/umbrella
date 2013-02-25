@@ -14,6 +14,8 @@
         </select>
 
         <span class="reset" id="search">Search</span> <!-- karen change this later  -->
+        <span class="reset" id="reset">Reset</span> <!-- karen change this later  -->
+
 
     <div class="clear"></div>
     </div> <!-- end sort collections  -->
