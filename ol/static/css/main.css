@@ -12,16 +12,21 @@ html, body  {
 
 body {
 	background-color: #fff;
-	font-family:sans-serif;
-	color: #222;
-	font-size: 16px;
+	font-family: 'Ubuntu Condensed', sans-serif;
+	color: #666;
+	font-size: 18px;
 	line-height: 1.4;
+	
 }
 
 /* COLUMNS */
 
 .col25 {
 	width: 25%;
+}
+
+.col30 {
+	width: 30%;
 }
 
 .col33 {
@@ -32,11 +37,15 @@ body {
 	width: 50%;
 }
 
+.col70 {
+	width: 70%;
+}
+
 .col75 {
 	width:75%;
 }
 
-.col25, .col75 {
+.col25, .col30, .col70, .col75, .col50 {
 	float: left;
 }
 
@@ -51,6 +60,7 @@ body {
 
 a {
   text-decoration: none;
+  color: #111;
 }
 
 a:hover, a:focus {
@@ -66,7 +76,7 @@ em {
 
 
 h1, h2, h3, h4, h5, h6 {
-	padding-bottom:10px;
+	/* padding-bottom:10px; */
 }
 
 h6 {
@@ -99,7 +109,11 @@ img {
 	height: auto;
 }
 
-input[type="submit"] {
+input {
+	padding: 4px;
+}
+
+input[type="submit"], select {
 	cursor: pointer;
 }
 
@@ -107,71 +121,476 @@ textarea {
 	vertical-align: top;
 }
 
+.smallFont {
+	font-size: 90%;
+}
+
+.smallerFont {
+	font-size: 80%;
+}
+
 /* END GLOBAL STYLES */
 
 #wrapper {
 	padding: 10px 30px;
+	max-width: 1440px;
+}
+
+#menuBlock {
+	float: left;
+	width: 300px; /* change later, layout depends on this so be careful  */
+	position: fixed;
+	left: 0;
+	top: 0;
+	padding: 20px;
+	text-align: center;
+}
+
+#contentBlock {
+	float: left;
+	margin-left: 300px;
 }
 
 #logo {
-	font-family:'Libre Baskerville', serif; /* add more later  */
 	font-size: 280%;
 	text-transform: uppercase;
 	text-align: center;
 }
 
-#menu, #search input {
-	font-family: 'Open Sans Condensed', sans-serif;	/* add more later  */
+#logo, .serif {
+	font-family:'Libre Baskerville', serif; /* add more later  */
 }
 
-#menu, #search input {
-
-	font-size: 140%;
+#search {
 	text-align: center;
 }
 
+#search input {
+	/* padding: 3px 12px; */
+	color: #444;
+	width: 170px;
+	padding: 2px 6px;
+}
+
+#sortViewsBlock {
+	padding: 10px 20px 20px 28px;
+	position: fixed;
+	top: 0;
+	left: 320px;
+	right: 0;
+	background: white;
+	z-index: 800;
+	/* width: 70%; */
+}
+
+#sortCollections select {
+		display: inline-block;
+        background: #778899; /* formerly yellow: eecc44  */
+        border: none;
+        padding: 2px 6px;
+        -webkit-appearance: none;
+        text-align: center;
+        color: #fff;
+        /* text-transform: uppercase; */
+		font-size: 90%;
+		width: 140px;
+		z-index: 900 !important;/* is this ok?  */
+        /* font-family: "Libre Baskerville"; */
+    }
+    
+/* #sortCollections select:nth-child(even) {
+		background: #eeda57;
+	} */
+		
+.selectSort .hasCustomSelect, .mySelectBoxClass {
+	z-index: 900;
+}
+ 	
+    #sortCollections .col25 {
+        width: 20%;
+    }
+    
+    #sortCollections {
+        text-align: center;
+		float: left;
+    }
+    
+    #sortCollections .col25 {
+        text-align: center;
+    }
+
+.reset {
+	background: #666;
+	padding: 2px 4px 4px 4px;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 90%;
+	letter-spacing: 1px;
+	cursor: pointer;
+}
+
+/* .reset img {
+	padding: 2px 2px 0 0;
+} */
+
+.formModal {
+	border: 4px double lightblue;
+	padding: 20px;
+	text-align: center;
+	/* width: 320px; */
+	margin: 0 auto;
+	position: relative;
+	background: rgba(255,255,255,0.7);
+}
+
+.formModal:after {
+	content: "";
+	position: absolute;
+	border: 4px double khaki;
+	width: 100%;
+	height: 100%;
+	left: -12px;
+	top: -12px;
+	z-index: -1;
+}
+
+
+/* .formSignUp .lightBoxBlock {
+	width: 340px;
+}
+ */
+
+#formSignUp label{
+	min-width: 120px;
+}
+
+.formModal label, #formSignUp label {
+	display: inline-block;
+}
+
+.formModal input, .formModal textarea {
+	margin-bottom: 10px;
+}
+
+.formModal textarea {
+	height: 200px;
+}
+
+.formModal input[type="submit"] {
+	width: 100%;
+	background: lightblue;
+	color: #fff;
+	padding: 6px 4px;
+	border: none;
+}
+
+
+#menu, #search input, #sortCollections select {
+	font-family: 'Open Sans Condensed', sans-serif;	/* add more later  */
+}
+
+#sortCollections select {
+	font-family: Libre Baskerville;
+	font-size: 80%;
+}
+
+#menu, #search input {
+
+	font-size: 130%;
+	text-align: center;
+}
+
+/* #search select, #searchMenu {
+	float: left;
+}
+ */
+#search select, #search input {
+	height: 42px;
+}
+
+#search select {
+	width: 80px;
+	padding: 11px 6px;
+	background: darkblue;
+	color: #fff;
+	display: none;
+}
+
 #menu li {
-	padding: 10px 4px;	
+	padding: 6px 4px;	
 }
 
 #menu li a {
 	color: #444;
 }
 
-#search {
-	text-align: center;
-}
-#search input {
-	padding: 3px 12px;
-	color: #444;
+#aboutHome {
+	padding: 14px 8px;
+	border: 3px double #aaa;
+	font-family: Libre Baskerville;
+	font-size: 90%;
+	margin-top: 30px;
+	max-width: 280px;
+	margin: 0 auto;
 }
 
+.go {
+	height: 42px;
+	background: lightblue;
+	display: inline-block;
+	vertical-align: top;
+	padding: 8px 8px 2px;
+	display: none;
+}
 #content {
-	padding: 50px 0 0 0;
+	padding: 80px 0 0 0;
 }
 
-.browse {
-	position: relative;	
+.listGridView {
+	float: right;
+	/* padding: 0px 20px 0 0; */
 }
 
+.linkListView, .linkGridView, .selectSort, .linkDetailsView {
+	float: left;
+	display: block;
+	padding: 0 0 0 10px;
+}
 
-.browse .col25 {
+.linkDetailsView {
+	margin-top: -1px;
+}
+
+.linkDetailsView div {
+	float: left;
+	margin: 0 2px 3px 0;
+}
+
+.linkDetailsView div {
+	border-top: 3px solid;
+	width: 16px;
+	/* height: 4px; */
+}
+
+.linkDetailsView div:nth-of-type(2n+1) {
+	width: 5px;
+	height: 5px;
+	background: #000;
+	clear: both;
+	
+}
+
+.linkDetailsView div:nth-of-type(2n) {
+	margin-top: 1px;
+}
+
+.listView/* , .listView:before, .listView:after */ {
+	width: 21px;
+	/* height: 30px; */
+}
+
+.listView div {
+	border-bottom: 3px solid #666;
+	padding: 5px 0 0 0;
+}
+
+.listView div:first-of-type {
+	border-top: 3px solid #999;
+	/* height: 11px; */
+}
+
+/* .listView div:last-of-type {
+	height: 8px;
+}
+ */
+ /* .listView:before, .listView:after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+ }
+ */
+/* .listView:before {
+	border-top: 3px solid #999;
+	bottom: -11px;
+}
+ */
+/* .listView:after {
+	border-bottom: 3px solid #999;
+	bottom: 5px;
+}
+ */
+.linkGridView, .linkListView, .linkDetailsView {
+/* 	width: 34px;
+height: 30px;
+ */
+	/*padding: 0 0 0 10px;*/
+	/* margin-top: -8px; */
+	position: relative;
+}
+
+/* .selectSort {
+	margin: 0 10px 0 0;
+}
+ */
+.gridView div {
+	background: #444;
+	width: 5px;
+	height: 5px;
+	float: left;
+	/* padding: 2px; */
+	margin: 0 2px 2px 0;
+	/* margin-top: 20px; */
+}
+
+/* .gridView div:nth-of-type(3n+2) {
+	background: #222;
+}
+ */
+.gridView div:nth-of-type(3n+1) {
+	clear: both;
+}
+
+.tooltip {
+	font-size: 64%;
+	font-family: Helvetica, sans-serif;
+	background: darkblue;
+	padding: 2px 4px;
+	color: #eee;
+	position: absolute;
+	bottom:-32px;
+	right: 0px;
+	display: none;
+	white-space: nowrap;
+}
+	
+.linkGridView:hover .tooltip, .linkListView:hover .tooltip, .linkDetailsView:hover .tooltip {
+	display: block;
+}	
+	
+.linkGridView:hover:after, .linkListView:hover:after, .linkDetailsView:hover:after {
+	content: ' ';
+position: absolute;
+width: 0;
+height: 0;
+left: 10px;
+bottom: -12px;
+border: 5px solid;
+border-color: transparent darkblue darkblue transparent;}
+
+
+#browseGridView .col25 {
+	padding: 0px 16px 28px 16px;
+	position: relative;
+}
+
+#browseDetailsView .col25, #browseDetailsView .col75 {
+	padding: 10px;
+}
+
+#browseGridView .col25:nth-of-type(4n+1) {
+	clear: both;
+}
+
+.description {
+	padding: 10px 0;
+}
+
+.lenderBlock, .browseDetailEach, .browseListEach {
+	border-bottom: 1px solid #bbb;	
+}
+
+.lenderBlockText {
 	padding: 20px;
 }
 
-.browse .col25:nth-of-type(4n+1) {
-	clear: both;
+.lenderTally a {
+	border-bottom: 1px solid darkseagreen;
 }
-.contentVerticalHeadings {
-	font-size: 160%;
-	position: absolute;
-	right: -28px;
-	top: 110px; /* RIDICUlous change later  */
-	font-family: 'Open Sans Condensed';
-	-webkit-transform: rotate(-270deg);/* add vendor prefixes later  */
-	-webkit-backface-visibility: hidden; /* hack for smoother rotated text  */
 
+.lenderMap iframe {
+	float: left;
 }
+
+.lenderMap small {
+	display: none; /* remove later, put this for stupid layout issues  */
+}
+
+.browseDetailEach {
+	padding: 10px 0;
+}
+
+.browseDetailEach .col25 img {
+	
+}
+
+.browseListEach {
+	padding: 10px 40px;
+}
+
+.browseListEach .moreDetails {
+	float: left;
+}
+
+.browseListEach .contactLender {
+	float: right;	
+}
+
+.contactLender {
+	background: #e87a5d;/* formerly mediumaquamarine  */
+	padding: 2px 4px;
+	color: #fff;
+	font-size: 90%;
+}
+
+.imgThumbnailCaption {
+position: absolute;
+left: 0;
+top: 0;
+right: 0;
+bottom: 0;
+padding: 6px;
+background: rgba(255,255,255,0.9);
+width: 100%;
+/*height: 100%;*/
+padding: 10px;
+opacity: 0;
+color: #222;
+font-size: 90%;
+text-align: center;
+-webkit-transition: all 0.6s ease-in-out;
+-moz-transition: all 0.6s ease-in-out;
+-o-transition: all 0.6s ease-in-out;
+-ms-transition: all 0.6s ease-in-out;
+transition: all 0.6s ease-in-out;
+}
+
+.imgThumbnailCaption:hover {
+opacity: 1;
+-webkit-transition: all 0.6s ease-in-out;
+-moz-transition: all 0.6s ease-in-out;
+-o-transition: all 0.6s ease-in-out;
+-ms-transition: all 0.6s ease-in-out;
+transition: all 0.6s ease-in-out;
+}
+
+/* customations for select */
+
+.mySelectBoxClass {
+	font-size:80%;
+    height: 20px;
+}
+
+    .mySelectBoxClass:after {
+    content: "\02193";
+    font-size: 180%;
+    line-height: 0.5;
+    }
+
+.mySelectBoxClass .customSelectInner {
+    width: 44px !important;
+}
+/* end customations for select */
 
 /* MEDIA QUERIES */
 
