@@ -60,11 +60,11 @@ def books(request):
     if request.method == 'GET':
         sort = request.GET.get('sort','-_id')
         by,what = (sort[0],sort[1:],)
-        limit = request.GET.get('limit',50)
+        #limit = request.GET.get('limit',50)
         author = request.GET.get("author", None)
         genre = request.GET.get("genre", None)
         page = int(request.GET.get("page", "1"))
-        per_page = int(request.GET.get("per_page", "8"))
+        per_page = int(request.GET.get("per_page", "50"))
         q = request.GET.get("q", None)
         connection = MongoClient()
         db = connection.ol
