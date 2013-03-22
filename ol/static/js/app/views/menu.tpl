@@ -2,7 +2,7 @@
 
         <div id="logo">umbrella</div>
         
-        <form id="search" action="" onsubmit="Javascript:void(0);">            
+        <form id="searchForm" action="" onsubmit="Javascript:void(0);">            
             <div id="searchMenu">
                 <input type="" id="querystring" placeholder="Find"><span class="go">Go</span>
                 <ul id="menu">

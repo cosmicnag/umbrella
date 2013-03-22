@@ -27,6 +27,7 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','jquery',
             'click #listview' :'showlistview'
             'click #gridview' : 'showgridview'
             'click #reset': 'resetQuery'
+            'change #author, #genre, #lender, #sort': 'fireQuery'
         fireQuery: ()->
             [@author,@genre,@lender,@sort] = [window.encodeURIComponent(@ui.author.val()),@ui.genre.val(),@ui.lender.val(),@ui.sort.val()]
             @querystring = mediator.requests.request "querystring"
