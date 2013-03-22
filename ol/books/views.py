@@ -60,7 +60,7 @@ def books(request):
     if request.method == 'GET':
         sort = request.GET.get('sort','-_id')
         by,what = (sort[0],sort[1:],)
-        limit = request.GET.get('limit',8)
+        limit = request.GET.get('limit',50)
         author = request.GET.get("author", None)
         genre = request.GET.get("genre", None)
         page = int(request.GET.get("page", "1"))
