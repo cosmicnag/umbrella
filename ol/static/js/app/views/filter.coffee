@@ -5,6 +5,7 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','jquery',
         initialize:(options) ->
             super()
             [$authors,$lenders,$genres] =[[],[],[]]
+
             @listenTo mediator.events,"filters:loaded",(filterdata) =>
                 $authors.push($("<option>").attr('value',obj[0]).text(obj[1]))  for obj in _.pairs(filterdata.authors)
                 
@@ -14,6 +15,12 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','jquery',
                 @ui.lender.append $lenders
                 @ui.genre.append $genres
 
+            @listenTo mediator.events, "search:queried", (queryObj) =>
+                console.log "search query event"
+                @ui.author.val(queryObj.author)
+                @ui.genre.val(queryObj.genre)
+                @ui.lender.val(queryObj.lender)
+                
         ui:
             author: '#author'
             genre: '#genre'

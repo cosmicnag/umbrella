@@ -10,6 +10,7 @@ define ['cs!app/ol','cs!app/views/menu','cs!app/views/layouts/content','cs!app/v
         layoutrendered: false
         renderHome:(defaults = true)->
             return if @layoutrendered
+            console.log "rendering home"
             OL.menu.show new MenuView()
             contentlayout = new ContentLayout()
             OL.content.show contentlayout
@@ -21,13 +22,16 @@ define ['cs!app/ol','cs!app/views/menu','cs!app/views/layouts/content','cs!app/v
 
         query:(query, genre, author, lender, sort)->
             @renderHome(false) if not @layoutrendered
-            books = new Books [],
+            queryObj = {
                 query: query
                 genre: genre
                 author: author
                 lender: lender
                 sort: sort
+            }
+            books = new Books [], queryObj
             
+            mediator.events.trigger "search:queried", queryObj        
             books.fetch {
                 success:(collection) =>
                         

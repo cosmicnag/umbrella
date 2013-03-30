@@ -1,4 +1,5 @@
 require.config({
+    urlArgs: 'cb=' + Math.random(),
     paths:{
         // RequireJS plugin
         text:'libs/text',
