@@ -18,7 +18,7 @@
                         <% if (typeof(description) != 'undefined') { %>
                         <div class="description"><%= description.value %></div>
                         <% } %>
-                        <a href="" class="linkModal contactLender">Email Lender</a>
+                        <a href="javascript:void(0);" class="linkModal contactLender">Borrow</a>
                     </div> <!-- end col 75  -->
                     <div class="clear"></div>
                 </div>

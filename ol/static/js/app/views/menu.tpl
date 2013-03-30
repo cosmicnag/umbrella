@@ -9,8 +9,8 @@
                     <li><a href="#">About</a></li>
                     <li><a href="lenders.html">Lenders</a></li>
                     <li class="smallerFont">
-                    <a class="linkModal" href="#">Sign-up</a> |
-                    <a href="#"> Sign-In</a></li>
+                    <a class="linkModal" id="signupBtn" href="javascript:void(0);">Sign-up</a> |
+                    <a href="javascript:void(0);" id="signinBtn"> Sign-In</a></li>
                 </ul>
             </div> <!-- end search Menu  -->
                         

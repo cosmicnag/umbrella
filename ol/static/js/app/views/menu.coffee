@@ -9,8 +9,16 @@ define ['marionette','tpl!app/views/menu.tpl', 'cs!app/helpers/book', 'cs!app/co
             querystring: '#querystring'
         events:
             'submit #searchForm': 'submitSearch'
+            'click #signupBtn': 'signup'
+            'click #signinBtn': 'signin'
 
         submitSearch: () ->
             BookHelper.fireQuery() #TODO: pass args
 
-    MenuView
+        signup: (e) ->
+            e.preventDefault()
+            mediator.commands.execute "modal", "signup"
+
+        signin: (e) ->
+            e.preventDefault()
+            mediator.commands.execute "modal", "signin"

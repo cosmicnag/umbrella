@@ -4,8 +4,8 @@
                         </div>
                         <div class="bookAuthor"><em><%= subtitle %></em></div>
                         <a class="smallFont moreDetails" href="">More<p></p>
-                        </a><a href="" class="linkModal contactLender">
-                        Email Lender</a>
+                        </a><a href="javascript:void(0);" class="linkModal contactLender">
+                        Borrow</a>
                         <br>
                         <div class="clear"></div>
                     </div>

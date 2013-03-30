@@ -2,6 +2,9 @@
 import os
 from os.path import join
 
+import djcelery
+djcelery.setup_loader()
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 THUMBNAIL_DEBUG = DEBUG
@@ -16,6 +19,9 @@ ADMINS = (
 INTERNAL_IPS = ('127.0.0.1',)
 
 PROJECT_ROOT = os.path.normpath(os.path.dirname(__file__))
+
+#RabbutMQ
+BROKER_URL = 'amqp://guest:guest@localhost:5672/'
 
 MANAGERS = ADMINS
 
@@ -159,6 +165,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'south',
     'books',
+    'djcelery',
     
 )
 

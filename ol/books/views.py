@@ -2,13 +2,13 @@
 from models import *
 from ox.django.shortcuts import render_to_json_response
 from pymongo import MongoClient
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response,get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.views.decorators.csrf import csrf_exempt
 import re
 import math
-
+from helpers.book import get_authors, get_genres
 
 def lenders(request):
     if request.method == 'GET':
@@ -21,16 +21,13 @@ def lenders(request):
 def signup(request):
     username = request.POST.get("username", None)
     password = request.POST.get("password", None)
-    password2 = request.POST.get("password2", None)
     email = request.POST.get("email", None)
     first_name = request.POST.get("first_name", None)
     last_name = request.POST.get("last_name", None)
-    if not username or not password or not password2:
+    if not username or not password: 
         return render_to_json_response({'error': 'insufficient data'})
     if User.objects.filter(username=username).count() > 0:
         return render_to_json_response({'error': 'Username exists'})
-    if password != password2:
-        return render_to_json_response({'error': 'Passwords do not match'})
     u = User()
     u.username = username
     u.set_password(password)
@@ -41,7 +38,8 @@ def signup(request):
     if last_name:
         u.last_name = last_name
     u.save()
-    login(request, u)
+    user = authenticate(username=username, password=password)
+    login(request, user)
     return render_to_json_response({'success': 'User logged in'})
 
 
@@ -55,6 +53,19 @@ def signin(request):
         return render_to_json_response({'success': 'User logged in'})
     return render_to_json_response({'error': 'Username / password do not match'})
 
+@csrf_exempt
+def borrow(request):
+    id = request.POST.get("id", None)
+    message = request.POST.get("message", "")
+    user = request.user
+    if not user.is_authenticated():
+        return render_to_json_response({'error':'Not logged in.'})
+    book = get_object_or_404(Book,mongo_id=id)
+    borrow = Borrow(user=user,book=book,message=message)
+    borrow.save() 
+    from helpers.book import processborrow
+    processborrow(borrow)
+    return render_to_json_response({'success':'success'})
 	
 def books(request):
     if request.method == 'GET':
@@ -125,6 +136,14 @@ def get_filters_data(request):
     map(set.__setitem__, genres, [])
     unique_genres = set.keys()
     return render_to_json_response({'authors': authors, 'lenders': lenders, 'genres': unique_genres}) 
+
+def authors(request, q):
+    authors = get_authors(q)
+    return render_to_json_response(authors)
+
+def genres(request, q):
+    genres = get_genres(q)
+    return render_to_json_response(genres)
 
 def index(request):
     return render_to_response('index.jade')

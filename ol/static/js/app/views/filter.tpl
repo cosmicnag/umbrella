@@ -1,14 +1,7 @@
 <div id="sortCollections">
-        <select id="author">
-            <option value="all">All Authors</option>
-        </select>
-    
-    
-        <select id="genre">
-            <option value="all">All Genres</option>
-        </select>
-    
-    
+    <input type="text" id="author" />
+    <input type="text" id="genre" />
+ 
         <select id="lender">
             <option value="all">All Lenders</option>
         </select>

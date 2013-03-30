@@ -2,7 +2,8 @@ define ['marionette','cs!app/core/router','backbone'],(Marionette,OLRouter,Backb
     OL = new Marionette.Application()
     OL.addRegions
         menu: '#menuBlock'
-        content: '#contentBlock'
+        content: '#contentBlock',
+        modal: '.lightBoxContent'
     OL.addInitializer ()->
         console.log "init"
         @router = new OLRouter()
