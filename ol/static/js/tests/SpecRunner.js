@@ -18,6 +18,7 @@ require.config({
         // jQuery
         jquery:'libs/jquery-1.8.3.min',
         typeahead: 'libs/typeahead.min',
+        chai: 'libs/chai',
         jasmine: 'libs/jasmine-1.3.1/jasmine',
         'jasmine-html': 'libs/jasmine-1.3.1/jasmine-html',
         'jasmine-require': 'libs/jasmine-1.3.1/jasmine-require',
@@ -70,7 +71,7 @@ require(['underscore', 'jquery', 'jasmine-html'], function(_, $, jasmine){
     };
 
     var specs = [];
-    specs.push('cs!spec/collections/BooksSpec');
+    specs.push('cs!spec/collections/books');
 //    specs.push('spec/models/TodoSpec');
 //    specs.push('spec/views/ClearCompletedSpec');
 //    specs.push('spec/views/CountViewSpec');
