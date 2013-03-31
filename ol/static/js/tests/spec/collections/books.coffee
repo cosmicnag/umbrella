@@ -1,7 +1,7 @@
 define ['chai'], (chai) ->
     console.log chai
     [assert, expect, should] = [chai.assert, chai.expect, chai.should]
-    describe "testing places", ->
+    describe "testing books", ->
       done = false
       beforeEach ->
         require ["cs!app/collections/books"], (Books) =>
