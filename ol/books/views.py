@@ -69,7 +69,9 @@ def borrow(request):
 	
 def books(request):
     if request.method == 'GET':
-        sort = request.GET.get('sort','-_id')
+        sort = request.GET.get('sort','')
+        if sort == '':
+            sort = '-_id'
         by,what = (sort[0],sort[1:],)
         #limit = request.GET.get('limit',50)
         author = request.GET.get("author", None)
