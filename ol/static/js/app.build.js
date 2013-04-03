@@ -1,5 +1,5 @@
-require.config({
-    urlArgs: 'cb=' + Math.random(),
+({
+    baseUrl: ".",
     paths:{
         // RequireJS plugin
         text:'libs/text',
@@ -43,11 +43,27 @@ require.config({
             deps:['jquery'],
             exports: '$'
         }
-    }
-});
-
-require(["cs!app/ol","domReady"],function(OL,domReady){
-   domReady ( function(){
-        OL.start();
-    }); 
-});
+    },
+    name: "main",
+    out: "build/main.js",
+    include: [
+        "cs!app/init",
+        "cs!app/utils/ajax",
+        "cs!app/core/globals",
+        "cs!app/core/settings",
+        "cs!app/core/mediator",
+        "cs!app/models/book",
+        "cs!app/views/filter",
+        "cs!app/views/bookview",
+        "cs!app/views/menu",
+        "cs!app/views/layouts/content",
+        "cs!app/views/booksview",
+        "cs!app/views/modals/signin",
+        "cs!app/views/modals/borrow",
+        "cs!app/views/modals/signup",
+        "cs!app/collections/books",
+        "cs!app/helpers/user",
+        "cs!app/helpers/modal",
+        "cs!app/helpers/book"
+    ]
+})
