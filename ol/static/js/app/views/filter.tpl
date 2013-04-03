@@ -1,19 +1,14 @@
 <div id="sortCollections">
-        <select id="author">
-            <option value="all">All Authors</option>
-        </select>
-    
-    
-        <select id="genre">
-            <option value="all">All Genres</option>
-        </select>
-    
-    
+    <input type="text" id="author" />
+    <input type="text" id="genre" />
+ 
         <select id="lender">
             <option value="all">All Lenders</option>
         </select>
 
         <span class="reset" id="search">Search</span> <!-- karen change this later  -->
+        <span class="reset" id="reset">Reset</span> <!-- karen change this later  -->
+
 
     <div class="clear"></div>
     </div> <!-- end sort collections  -->
@@ -30,6 +25,7 @@
 
 <a href="javascript:void(0);" id="detailview" class="linkDetailsView">
     
+    <div></div>
     <div></div>
     <div></div>
     <div></div>

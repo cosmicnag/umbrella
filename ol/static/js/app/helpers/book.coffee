@@ -1,4 +1,4 @@
-define ['cs!app/ol','cs!app/views/menu','cs!app/views/layouts/content','cs!app/views/filter','cs!app/views/books','cs!app/collections/books', 'jquery','cs!app/core/mediator'],(OL,MenuView,ContentLayout,FilterView,BooksView,Books,$,mediator)=>
+define ['cs!app/ol','cs!app/views/menu','cs!app/views/layouts/content','cs!app/views/filter','cs!app/views/books','cs!app/collections/books', 'jquery','cs!app/core/mediator','require'],(OL,MenuView,ContentLayout,FilterView,BooksView,Books,$,mediator,require)=>
 #define ['require',(require) ->
     #MenuView = require 'cs!app/views/menu'
     #ContentLayout = require 'cs!app/views/layouts/content'
@@ -10,6 +10,7 @@ define ['cs!app/ol','cs!app/views/menu','cs!app/views/layouts/content','cs!app/v
         layoutrendered: false
         renderHome:(defaults = true)->
             return if @layoutrendered
+            console.log "rendering home"
             OL.menu.show new MenuView()
             contentlayout = new ContentLayout()
             OL.content.show contentlayout
@@ -21,12 +22,16 @@ define ['cs!app/ol','cs!app/views/menu','cs!app/views/layouts/content','cs!app/v
 
         query:(query, genre, author, lender, sort)->
             @renderHome(false) if not @layoutrendered
-            books = new Books
+            queryObj = {
                 query: query
                 genre: genre
                 author: author
                 lender: lender
                 sort: sort
+            }
+            books = new Books [], queryObj
+            
+            #mediator.events.trigger "search:queried", queryObj
             books.fetch {
                 success:(collection) =>
                         
@@ -35,5 +40,20 @@ define ['cs!app/ol','cs!app/views/menu','cs!app/views/layouts/content','cs!app/v
         getFilterData:()->
             $.getJSON "/api/filters", {}, (response) =>
                 mediator.events.trigger "filters:loaded",response
+
+        borrow: (id,message) ->
+            issignedin = mediator.requests.request 'issignedin'
+            if not issignedin
+                alert 'Please sign in / sign up.'
+                return
+            require ['cs!app/utils/ajax'],(ajaxutil) =>
+                tosend =
+                    id: id
+                    message: message
+                success_closure = (data) ->
+                    console.log data
+                    mediator.commands.execute 'closemodal'
+                ajaxutil.ajax 'borrow',tosend,'POST',success_closure
+    
 
     new BookHelper()

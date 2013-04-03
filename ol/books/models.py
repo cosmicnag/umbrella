@@ -3,8 +3,24 @@ from django.db import models
 from django.contrib.auth.models import User
 from django_hstore import hstore
 import urllib2
+import datetime
 import json
 from pymongo import MongoClient
+
+class BaseModel(models.Model):
+    changed = models.DateTimeField(null=True, editable=False)
+    created = models.DateTimeField(null=True, editable=False)
+
+    def save(self, *args, **kwargs):
+        if not self.id:
+            self.created = datetime.datetime.today()
+        self.changed = datetime.datetime.today()
+        if self.created == None:
+            self.created = self.changed
+        super(BaseModel, self).save(*args, **kwargs)
+
+    class Meta:
+        abstract = True
 
 class Lender(models.Model):
 	name = models.CharField(max_length=256)
@@ -60,10 +76,15 @@ class Book(models.Model):
 
 
 STATUS_CHOICES = (
-	(0, 'avaialble to borrow'),
+	(0, 'available to borrow'),
 	(1, 'available to browse'),
 	(2, 'available to take'),
 )
+
+class Borrow(BaseModel):
+    user = models.ForeignKey(User)
+    book = models.ForeignKey(Book)
+    message = models.TextField(blank=True)
 
 class LenderBook(models.Model):
 	lender = models.ForeignKey(Lender)

@@ -4,7 +4,7 @@ define ['marionette','require'],(Marionette,require) ->
             require ['cs!app/helpers/book'],(bookhelper) ->
                 bookhelper.renderHome()
         "query":(genre, author, lender, sort,query='') ->
-            console.log "in"
+            console.log "query controller called"
             require ['cs!app/helpers/book'],(bookhelper) ->
                 bookhelper.query(query, genre, author, lender, sort)
     }

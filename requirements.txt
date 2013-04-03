@@ -6,3 +6,4 @@ django-debug-toolbar
 pyjade
 pymongo
 ox
+django-celery
