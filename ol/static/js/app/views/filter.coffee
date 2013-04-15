@@ -22,7 +22,7 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','typeahea
                     remote: '/api/authors/%QUERY.json'
                     engine: engine
                     valueKey: 'name'
-                    template: "<h2><%= name %></h2>"
+                    template: "<p><%= name %></p>"
                 $('#author').on 'typeahead:selected', (e, datum) =>
                     console.log datum
                     querystring = mediator.requests.request "querystring"
@@ -32,7 +32,7 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','typeahea
                     name: 'genre'
                     remote: '/api/genres/%QUERY.json'
                     engine: engine
-                    template: "<h2><%= value %></h2>"
+                    template: "<p><%= value %></p>"
 
                 $('#genre').on 'typeahead:selected', (e, datum) =>
                     console.log datum
@@ -59,7 +59,7 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','typeahea
             sort: '#sort'
             #TODO grid/list
         events:
-            'click #search': 'fireQuery' 
+            'click #search': 'fireQuery'
             'click #detailview' : 'showdetailview'
             'click #listview' :'showlistview'
             'click #gridview' : 'showgridview'

@@ -1,13 +1,13 @@
 <div id="sortCollections">
-    <input type="text" id="author" />
-    <input type="text" id="genre" />
+    <input type="text" id="author" placeholder="Author" />
+    <input type="text" id="genre" placeholder="Genre" />
  
         <select id="lender">
             <option value="all">All Lenders</option>
         </select>
 
-        <span class="reset" id="search">Search</span> <!-- karen change this later  -->
-        <span class="reset" id="reset">Reset</span> <!-- karen change this later  -->
+        <!--<span class="reset" id="search">Search</span>-->
+        <span class="reset" id="reset">Reset</span>
 
 
     <div class="clear"></div>

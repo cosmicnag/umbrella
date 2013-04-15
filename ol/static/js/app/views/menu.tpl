@@ -1,6 +1,6 @@
         <!-- <div class="b">C</div> -->
 
-        <div id="logo">umbrella</div>
+        <div id="logo"><a href="">umbrella</a></div>
         
         <form id="searchForm" action="" onsubmit="Javascript:void(0);">            
             <div id="searchMenu">

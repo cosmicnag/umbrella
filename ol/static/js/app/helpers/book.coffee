@@ -53,7 +53,9 @@ define ['cs!app/ol','cs!app/views/menu','cs!app/views/layouts/content','cs!app/v
                 success_closure = (data) ->
                     console.log data
                     mediator.commands.execute 'closemodal'
-                ajaxutil.ajax 'borrow',tosend,'POST',success_closure
+                error_closure = (data) ->
+                    alert data.error
+                ajaxutil.ajax 'borrow',tosend,'POST',success_closure, error_closure
     
 
     new BookHelper()

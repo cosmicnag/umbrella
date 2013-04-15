@@ -66,10 +66,10 @@ html, body  {
 
 body {
     background-color: #fff;
-    font-family: 'Ubuntu Condensed', sans-serif;
     color: #666;
     font-size: 18px;
     line-height: 1.4;
+    font-family: 'Ubuntu Condensed', sans-serif;
     
 }
 
@@ -183,34 +183,42 @@ textarea {
     font-size: 80%;
 }
 
+.floatLeft {
+    float: left;
+}
+
+.floatRight {
+    float: right;
+}
+
 /* END GLOBAL STYLES */
 
 #wrapper {
     padding: 10px 30px;
-    max-width: 1440px;
+    max-width: 1440px;  /*this might change later*/
 }
 
 #menuBlock {
     float: left;
-    width: 30%;
-    max-width: 300px; /* change later, layout depends on this so be careful  */
+/*    width: 30%;*/
+    max-width: 260px; /* change later, layout depends on this so be careful  */
     position: fixed;
     left: 0;
     top: 0;
     padding: 0 20px 20px 20px;
     text-align: center;
     
-    background: #8BB381;
+/*    background: #8BB381;*/
 }
 
 #menuBlock, #menuBlock a {
-    color: #fff;
+    color: inherit;
 }
 
 #contentBlock {
-    float: left;
-    margin-left: 300px;
-    width: 70%;
+/*    float: left;*/
+    margin-left: 260px;
+/*    width: 70%;*/
     max-width: 1100px;
 }
 
@@ -227,15 +235,15 @@ textarea {
     line-height: 1.1;
 }
 
-#logo, .serif, .reset {
+#logo, #aboutHome, .formModal input[type="submit"], .serif /*, .reset, #author, #genre, .tt-hint*/ {
     font-family:'Libre Baskerville', serif; /* add more later  */
 }
 
-#search {
+#searchForm {
     text-align: center;
 }
 
-#search input {
+#searchForm input {
     /* padding: 3px 12px; */
     color: #444;
     width: 170px;
@@ -246,11 +254,14 @@ textarea {
     padding: 10px 20px 20px 18px;
     position: fixed;
     top: 0;
+    left: 290px;
+    right: 0;
     /* left: 320px; */
-    /* left: 0; */
+    /* left: 0; 
+    width: 70%;
+*/
     background: white;
     z-index: 800;
-    width: 70%;
     max-width: 1100px;
     
     /* display: none; */
@@ -261,12 +272,12 @@ textarea {
         display: inline-block;
         background: #778899; /* formerly yellow: eecc44  */
         border: none;
-        padding: 2px 6px;
+        padding: 1px 4px;
         -webkit-appearance: none;
         text-align: center;
-        color: #fff;
+/*        color: #fff;*/
         /* text-transform: uppercase; */
-        font-size: 90%;
+        font-size: 100%;
         width: 140px;
         z-index: 900 !important;/* is this ok?  */
         /* font-family: "Libre Baskerville"; */
@@ -295,9 +306,9 @@ textarea {
 
 .reset {
     background: #666;
-    padding: 3px 4px 3px 4px;
+    padding: 2px 4px;
     color: #fff;
-    font-size: 80%;
+/*    font-size: 80%;*/
     cursor: pointer;
 }
 
@@ -332,8 +343,17 @@ textarea {
 }
  */
 
-#formSignUp label{
+.formModal label {
+    font-size: 90%;
+}
+
+
+#formSignUp label {
     min-width: 120px;
+}
+
+#formSignIn label {
+    min-width: 70px;
 }
 
 .formModal label, #formSignUp label {
@@ -357,16 +377,17 @@ textarea {
 }
 
 
-#menu, #search input, #sortCollections select {
+#menu, #searchForm input, #sortCollections select, .reset, .tt-dropdown-menu, #author, #genre, .tt-hint, #sortCollections select {
     font-family: 'Open Sans Condensed', sans-serif; /* add more later  */
 }
 
 #sortCollections select {
-    font-family: Libre Baskerville;
-    font-size: 80%;
+/*    font-family: Libre Baskerville;*/
+/*    font-size: 90%;*/
+
 }
 
-#menu, #search input {
+#menu, #searchForm input {
 
     font-size: 130%;
     text-align: center;
@@ -397,10 +418,9 @@ textarea {
 
 #aboutHome {
     padding: 14px 8px;
-    /* border: 3px double #aaa; */
-    border: 3px double #fff;
-    font-family: Libre Baskerville;
-    font-size: 90%;
+    border: 3px double #aaa;
+/*    border: 3px double #fff;*/
+    font-size: 80%;
     margin-top: 30px;
     max-width: 280px;
     margin: 0 auto;
@@ -421,6 +441,7 @@ textarea {
 
 .listGridView {
     float: right;
+    margin: 16px 0;
     /* padding: 0px 20px 0 0; */
 }
 
@@ -428,6 +449,7 @@ textarea {
     float: left;
     display: block;
     padding: 0 0 0 10px;
+    z-index: 10;
 }
 
 .linkDetailsView {
@@ -549,12 +571,21 @@ height: 0;
 left: 10px;
 bottom: -12px;
 border: 5px solid;
-border-color: transparent darkblue darkblue transparent;}
+border-color: transparent darkblue darkblue transparent;
+}
 
 
 #browseGridView .col25 {
     padding: 0px 16px 28px 16px;
     position: relative;
+}
+
+#browseGridView .col25:hover {
+}
+
+.placeholderImg {
+    background: lightcoral;
+    padding: 20px;
 }
 
 #browseDetailsView .col25, #browseDetailsView .col75 {
@@ -566,7 +597,8 @@ border-color: transparent darkblue darkblue transparent;}
 }
 
 .description {
-    padding: 10px 0;
+    padding: 0 0 10px 0;
+    font-size: 90%;
 }
 
 .lenderBlock, .browseDetailEach, .browseListEach {
@@ -598,22 +630,33 @@ border-color: transparent darkblue darkblue transparent;}
 }
 
 .browseListEach {
-    padding: 10px 40px;
+    padding: 18px 10px;
 }
 
-.browseListEach .moreDetails {
-    float: left;
-}
+/*.browseListEach .moreDetails {*/
+/*    float: left;*/
+/*}*/
 
 .browseListEach .contactLender {
     float: right;   
 }
+
+/*#browseBlock .moreDetails {
+    background: darkslateblue; 
+    color: #fff;
+    padding: 2px 4px;
+    margin-bottom: 6px;
+    text-align: center;
+}*/
 
 .contactLender {
     background: #e87a5d;/* formerly mediumaquamarine  */
     padding: 2px 4px;
     color: #fff;
     font-size: 90%;
+    min-width: 122px;
+    text-align: center;
+    display: inline-block;
 }
 
 .imgThumbnailCaption {
@@ -651,7 +694,7 @@ transition: all 0.6s ease-in-out;
 
 .mySelectBoxClass {
     font-size:80%;
-    height: 20px;
+    height: 20px;   
 }
 
     .mySelectBoxClass:after {
@@ -665,9 +708,111 @@ transition: all 0.6s ease-in-out;
 }
 /* end customations for select */
 
+/* autocomplete styling */
+
+.twitter-typeahead {
+    vertical-align: top;
+}
+
+.tt-hint, .tt-dropdown-menu, .tt-query {
+    width: 140px;   
+}
+
+.tt-query, .tt-hint {
+    color: #fff;
+    font-size: 100%;
+    border: none;
+    padding: 2px 4px;
+}
+
+
+#author::-webkit-input-placeholder, #genre::-webkit-input-placeholder {
+    color: #fff;
+}
+
+#author::-moz-placeholder, #genre::-moz-placeholder {
+    color: red;
+    font-weight: bold;
+} /* test in this browser */
+
+#author:-ms-input-placeholder, #genre:-ms-input-placeholder {
+    color: red;
+    font-weight: bold;
+} /* TODO   test in this browser */
+
+
+.tt-query:focus {
+    outline: none;
+}
+
+#author, #genre {
+    background-color: #778899;
+}
+
+.tt-dropdown-menu {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+.tt-suggestion {
+    background: #fff;
+    font-size: 90%;
+    padding: 4px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tt-suggestion:hover {
+    background: #8BB381;
+    color: #fff;
+}
+
+/* autocomplete styling */
+
+
 /* MEDIA QUERIES */
 
-/*@media only screen and (max-width: 980px) {
-}*/
 
+@media only screen and (max-width: 1000px) {
+    #content {
+        padding: 50px 0 0;    
+    }    
+    
+    #browseGridView .col25 {
+        width: 50%;
+    }
+
+    #browseGridView .col25:nth-of-type(2n+1) {   
+        clear: both;
+    }
+
+    #browseGridView .col25 {
+        width: 50%;
+    }
+
+    #sortViewsBlock {
+        position: static;    
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    #browseGridView .col25, .col25, .col30, .col70, .col75, .col5025 {
+        width: 100%;
+        float: none;    
+    }
+
+    #browseGridView .col25 img {
+        display: block;
+        margin: 0 auto;    
+    }
+
+    #menuBlock {
+        position: static;    
+    }
+
+    #contentBlock {
+        margin-left: 0;
+    }
+
+}
 /* END MEDIA QUERIES */
+
