@@ -24,7 +24,7 @@ define ['backbone','marionette','require','cs!app/ol','cs!app/core/globals'],(Ba
 
   commands.addHandler "signin",() ->
     globals.set 'issignedin',true
-
+    events.trigger "signedin" 
 
   requests.addHandler "querystring",()->
     OL.menu.currentView.ui.querystring.val()

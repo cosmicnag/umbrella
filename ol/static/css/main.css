@@ -11,17 +11,17 @@
 
 @font-face {
     font-family: 'WCSoldOutABtaRegular';
-    src: url('WCSoldOutABta-webfont.eot');
-    src: url('WCSoldOutABta-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../../static/font/WCSoldOutABta-webfont.woff') format('woff'),
-         url('WCSoldOutABta-webfont.ttf') format('truetype'),
-         url('WCSoldOutABta-webfont.svg#WCSoldOutABtaRegular') format('svg');
+    src: url('../../static/fonts/WCSoldOutABta-webfont.eot');
+    src: url('../../static/fonts/WCSoldOutABta-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../static/fonts/WCSoldOutABta-webfont.woff') format('woff'),
+         url('../../static/fonts/WCSoldOutABta-webfont.ttf') format('truetype'),
+         url('../../static/fonts/WCSoldOutABta-webfont.svg#WCSoldOutABtaRegular') format('svg');
     font-weight: normal;
     font-style: normal;
 
 }
 
-@font-face {
+/*@font-face {
     font-family: 'WCSoldOutBBtaRegular';
     src: url('WC_Sold_Out_B_Bta-webfont.eot');
     src: url('WC_Sold_Out_B_Bta-webfont.eot?#iefix') format('embedded-opentype'),
@@ -31,9 +31,9 @@
     font-weight: normal;
     font-style: normal;
 
-}
+}*/
 
-@font-face {
+/*@font-face {
     font-family: 'WCSoldOutCBtaRegular';
     src: url('WC_Sold_Out_C_Bta-webfont.eot');
     src: url('WC_Sold_Out_C_Bta-webfont.eot?#iefix') format('embedded-opentype'),
@@ -43,7 +43,7 @@
     font-weight: normal;
     font-style: normal;
 
-}
+}*/
 
 
 #aboutHome:after {
@@ -191,6 +191,10 @@ textarea {
     float: right;
 }
 
+.center {
+    text-align: center;
+}
+
 /* END GLOBAL STYLES */
 
 #wrapper {
@@ -205,7 +209,9 @@ textarea {
     position: fixed;
     left: 0;
     top: 0;
-    padding: 0 20px 20px 20px;
+    bottom: 0;
+    padding: 40px 10px 20px 10px;
+    border-right: 1px dashed #bbb;
     text-align: center;
     
 /*    background: #8BB381;*/
@@ -239,6 +245,13 @@ textarea {
     font-family:'Libre Baskerville', serif; /* add more later  */
 }
 
+.umbrellaLogo {
+    position: absolute; 
+    width: 66px; 
+    top: 5px; 
+    right: -9px;
+}
+
 #searchForm {
     text-align: center;
 }
@@ -251,7 +264,7 @@ textarea {
 }
 
 #sortViewsBlock {
-    padding: 10px 20px 20px 18px;
+    padding: 10px 20px 10px 18px;
     position: fixed;
     top: 0;
     left: 290px;
@@ -270,12 +283,12 @@ textarea {
 
 #sortCollections select {
         display: inline-block;
-        background: #778899; /* formerly yellow: eecc44  */
+        background: #79869d; /* formerly yellow: eecc44 or blue 778899 */
         border: none;
         padding: 1px 4px;
         -webkit-appearance: none;
         text-align: center;
-/*        color: #fff;*/
+        color: #fff;
         /* text-transform: uppercase; */
         font-size: 100%;
         width: 140px;
@@ -317,13 +330,13 @@ textarea {
 } */
 
 .formModal {
-    border: 4px double lightblue;
+    border: 4px double #a1aabb;
     padding: 20px;
     text-align: center;
     /* width: 320px; */
     margin: 0 auto;
     position: relative;
-    background: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.6);
 }
 
 .formModal:after {
@@ -370,7 +383,7 @@ textarea {
 
 .formModal input[type="submit"] {
     width: 100%;
-    background: lightblue;
+    background: #79869d;
     color: #fff;
     padding: 6px 4px;
     border: none;
@@ -418,8 +431,8 @@ textarea {
 
 #aboutHome {
     padding: 14px 8px;
-    border: 3px double #aaa;
-/*    border: 3px double #fff;*/
+/*    border: 3px double #aaa;
+    border: 3px double #fff;*/
     font-size: 80%;
     margin-top: 30px;
     max-width: 280px;
@@ -441,7 +454,7 @@ textarea {
 
 .listGridView {
     float: right;
-    margin: 16px 0;
+    margin: 4px 0;
     /* padding: 0px 20px 0 0; */
 }
 
@@ -578,14 +591,24 @@ border-color: transparent darkblue darkblue transparent;
 #browseGridView .col25 {
     padding: 0px 16px 28px 16px;
     position: relative;
+    margin: 0 0 10px 0;
+    text-align: center;	
 }
 
-#browseGridView .col25:hover {
+#browseGridView .col25:hover .gridBorrowOL {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: block;
 }
 
 .placeholderImg {
-    background: lightcoral;
+    background: #666;
+    color: #fff;
     padding: 20px;
+   min-height: 280px; /* TODO change later */	
 }
 
 #browseDetailsView .col25, #browseDetailsView .col75 {
@@ -641,25 +664,38 @@ border-color: transparent darkblue darkblue transparent;
     float: right;   
 }
 
-/*#browseBlock .moreDetails {
-    background: darkslateblue; 
-    color: #fff;
-    padding: 2px 4px;
-    margin-bottom: 6px;
-    text-align: center;
-}*/
-
-.contactLender {
-    background: #e87a5d;/* formerly mediumaquamarine  */
-    padding: 2px 4px;
-    color: #fff;
-    font-size: 90%;
-    min-width: 122px;
-    text-align: center;
-    display: inline-block;
+.gridBorrowOL {
+    display: none;
+/*    position: absolute;
+    bottom: 33px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;*/
 }
 
-.imgThumbnailCaption {
+.bookLinkOL, .contactLender {
+    color: #fff;
+    padding: 2px 4px;
+    text-align: center;
+    display: inline-block;
+/*    min-width: 128px;*/
+    font-size: 90%;
+}
+
+.bookLinkOL {
+    background: #79869d; 
+}
+
+.bookLinkOL a {
+    color: #fff;	
+}
+
+.contactLender {
+    background: #a57c99;/* formerly mediumaquamarine  */
+    margin-top: 6px;
+}
+
+/*.imgThumbnailCaption {
 position: absolute;
 left: 0;
 top: 0;
@@ -668,7 +704,6 @@ bottom: 0;
 padding: 6px;
 background: rgba(255,255,255,0.9);
 width: 100%;
-/*height: 100%;*/
 padding: 10px;
 opacity: 0;
 color: #222;
@@ -689,7 +724,7 @@ opacity: 1;
 -ms-transition: all 0.6s ease-in-out;
 transition: all 0.6s ease-in-out;
 }
-
+*/
 /* customations for select */
 
 .mySelectBoxClass {
@@ -726,27 +761,24 @@ transition: all 0.6s ease-in-out;
 }
 
 
-#author::-webkit-input-placeholder, #genre::-webkit-input-placeholder {
-    color: #fff;
-}
-
-#author::-moz-placeholder, #genre::-moz-placeholder {
-    color: red;
-    font-weight: bold;
+#author::-webkit-input-placeholder, #genre::-webkit-input-placeholder, #author::-moz-placeholder, #genre::-moz-placeholder, #author:-ms-input-placeholder, #genre:-ms-input-placeholder {
+    color: #fff;  /* TODO black bg may cause usability issues */
 } /* test in this browser */
-
-#author:-ms-input-placeholder, #genre:-ms-input-placeholder {
-    color: red;
-    font-weight: bold;
-} /* TODO   test in this browser */
-
 
 .tt-query:focus {
     outline: none;
 }
 
 #author, #genre {
-    background-color: #778899;
+    color: #fff;
+}
+
+#author {
+    background-color: #79869d; /* formerly 778899 */
+}
+
+#genre {
+    background-color: #e4d663; /* formerly 778899 */
 }
 
 .tt-dropdown-menu {
@@ -761,8 +793,13 @@ transition: all 0.6s ease-in-out;
     border-bottom: 1px solid #ddd;
 }
 
+.twitter-typeahead:first-of-type .tt-suggestion:hover {
+    background: #79869d;
+    color: #fff;
+}
+
 .tt-suggestion:hover {
-    background: #8BB381;
+    background-color: #dece44; /* formerly 778899 */
     color: #fff;
 }
 

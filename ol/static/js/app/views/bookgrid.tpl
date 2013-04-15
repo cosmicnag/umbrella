@@ -9,5 +9,7 @@
     </div>
 <% } %>
 
-<a href="javascript:void(0);" class="linkModal contactLender">Borrow</a>
-<div class="bookLinkOL"><a href="http://openlibrary.org<%= key %>">OpenLibrary page</a></div>
+<div class="center gridBorrowOL">
+    <a class="bookLinkOL" href="http://openlibrary.org<%= key %>">OL Link</a>
+    <a href="javascript:void(0);" class="linkModal contactLender">Borrow</a>
+</div>

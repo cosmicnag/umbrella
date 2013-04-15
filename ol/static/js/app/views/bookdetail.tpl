@@ -21,7 +21,7 @@
                         <% if (typeof(subjects) != 'undefined') { %>
                         <div class="bookGenre"><% for (subject in subjects) { %> <%= subject %> <% } %></div>
                         <% } %>
-                        <div class="bookLinkOL"><a href="http://openlibrary.org<%= key %>">OpenLibrary page</a></div>
+                        <div class="bookLinkOL"><a href="http://openlibrary.org<%= key %>">OL Link</a></div>
                         <br>
                         <% if (typeof(description) != 'undefined') { %>
                         <div class="description"><%= description.value %></div>

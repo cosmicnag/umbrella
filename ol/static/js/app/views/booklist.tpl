@@ -5,7 +5,7 @@
         </div>
         <div class="bookAuthor smallFont"><em><%= subtitle %></em></div>
         <br>        
-        <div class="bookLinkOL"><a href="http://openlibrary.org<%= key %>"> <%= key %></a></div>
+        <div class="bookLinkOL"><a href="http://openlibrary.org<%= key %>">OL Link</a></div>
     </div>
         
         

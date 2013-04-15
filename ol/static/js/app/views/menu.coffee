@@ -5,8 +5,12 @@ define ['marionette','tpl!app/views/menu.tpl', 'cs!app/helpers/book', 'cs!app/co
             super(options)
             @listenTo mediator.events, "search:queried", (queryObj) =>
                 @ui.querystring.val(queryObj.query)
+            @listenTo mediator.events, "signedin", () =>
+                @ui.userBtns.text("Signed in")    
+
         ui:
             querystring: '#querystring'
+            userBtns: '.userBtns'
         events:
             'submit #searchForm': 'submitSearch'
             'click #signupBtn': 'signup'

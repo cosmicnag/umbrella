@@ -1,6 +1,9 @@
         <!-- <div class="b">C</div> -->
 
-        <div id="logo"><a href="">umbrella</a></div>
+        <div id="logo"><a href="">
+	umbrella
+	<img src="/static/svg/umbrella.svg" alt="" class="umbrellaLogo">
+	</a></div>
         
         <form id="searchForm" action="" onsubmit="Javascript:void(0);">            
             <div id="searchMenu">
@@ -8,7 +11,7 @@
                 <ul id="menu">
                     <li><a href="#">About</a></li>
                     <li><a href="lenders.html">Lenders</a></li>
-                    <li class="smallerFont">
+                    <li class="smallerFont userBtns">
                     <a class="linkModal" id="signupBtn" href="javascript:void(0);">Sign-up</a> |
                     <a href="javascript:void(0);" id="signinBtn"> Sign-In</a></li>
                 </ul>
