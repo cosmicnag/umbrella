@@ -32,6 +32,13 @@ class Lender(models.Model):
 	def __unicode__(self):
 		return self.name
 
+    def get_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'email': self.email
+        }
+
 	def fetch_list_from_openlibrary(self):
 		url = "http://openlibrary.org/people/umbrella_library/lists/%s/seeds.json" % self.list_id #OL25396L
 		raw = urllib2.urlopen(url).read()
@@ -73,6 +80,9 @@ class Book(models.Model):
 	
 	def __unicode__(self):
 		return self.ol_id
+
+    def lenders_json(self):
+        return [l.get_json() for l in self.lender_set.all().distinct()]        
 
 
 STATUS_CHOICES = (

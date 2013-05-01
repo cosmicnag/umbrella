@@ -39,6 +39,12 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','typeahea
                     querystring = mediator.requests.request "querystring"
                     mediator.commands.execute "firequery", querystring, datum.value, 'all', @ui.lender.val(), @ui.sort.val()
 
+                $('#querystring').on "keyup", (e) =>
+                    console.log "querystring keyup"
+                    if (e.keyCode == 13)
+                        qstring = mediator.requests.request "querystring"
+                        mediator.commands.execute "firequery", qstring, 'all', 'all', @ui.lender.val(), @ui.sort.val()
+
                 $lenders.push($("<option>").attr('value',obj[0]).text(obj[1]))  for obj in _.pairs(filterdata.lenders)
                 #$genres.push($("<option>").attr('value',obj).text(obj)) for obj in filterdata.genres
                 #@ui.author.append $authors
@@ -57,6 +63,7 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','typeahea
             lender: '#lender'
             search: '#search'
             sort: '#sort'
+            querystring: '#querystring'
             #TODO grid/list
         events:
             'click #search': 'fireQuery'

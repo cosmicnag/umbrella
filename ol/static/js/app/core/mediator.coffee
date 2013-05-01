@@ -27,7 +27,7 @@ define ['backbone','marionette','require','cs!app/ol','cs!app/core/globals'],(Ba
     events.trigger "signedin" 
 
   requests.addHandler "querystring",()->
-    OL.menu.currentView.ui.querystring.val()
+    OL.content.currentView.filter.currentView.ui.querystring.val()
 
   requests.addHandler "issignedin",()->
     globals.get 'issignedin'

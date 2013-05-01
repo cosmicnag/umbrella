@@ -1,4 +1,6 @@
+
 <div id="sortCollections">
+    <input type="" id="querystring" placeholder="Find">
     <input type="text" id="author" placeholder="Author" />
     <input type="text" id="genre" placeholder="Genre" />
  
@@ -24,18 +26,27 @@
 </select><span style="display: inline-block;" class="customSelect mySelectBoxClass selectSort"><span style="width: 71px; display: inline-block;" class="customSelectInner">&nbsp;</span></span>
 
 <a href="javascript:void(0);" id="detailview" class="linkDetailsView">
-    
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+    <div class="detailView">
+    <div>
+        <span></span>
+        <span></span>
+    </div>
+    <div>
+        <span></span>
+        <span></span>
+    </div>
+    <div>
+        <span></span>
+        <span></span>
+    </div>
+
     <p class="tooltip">Detail View</p>
+    </div>
 </a>
 
 <a href="javascript:void(0);" id="listview" class="linkListView">
     <div class="listView">
+        <div></div>
         <div></div>
         <div></div>
         <p class="tooltip">List View</p>
@@ -44,15 +55,21 @@
 
 <a href="javascript:void(0);" id="gridview" class="linkGridView">
     <div class="gridView">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <p class="tooltip">Grid View</p>
     </div>
 </a>

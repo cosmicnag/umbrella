@@ -1,17 +1,19 @@
         <!-- <div class="b">C</div> -->
 
         <div id="logo"><a href="">
-	umbrella
-	<img src="/static/svg/umbrella.svg" alt="" class="umbrellaLogo">
+	umbrella library
+	<!--<img src="/static/svg/umbrella.svg" alt="" class="umbrellaLogo">-->
+	<img src="/static/img/umbrella1.gif" alt="" class="umbrellaLogo">
+	
 	</a></div>
         
         <form id="searchForm" action="" onsubmit="Javascript:void(0);">            
             <div id="searchMenu">
-                <input type="" id="querystring" placeholder="Find"><span class="go">Go</span>
+                <!--<input type="" id="querystring" placeholder="Find">-->
                 <ul id="menu">
                     <li><a href="#">About</a></li>
                     <li><a href="lenders.html">Lenders</a></li>
-                    <li class="smallerFont userBtns">
+                    <li class="userBtns">
                     <a class="linkModal" id="signupBtn" href="javascript:void(0);">Sign-up</a> |
                     <a href="javascript:void(0);" id="signinBtn"> Sign-In</a></li>
                 </ul>
@@ -21,7 +23,12 @@
         </form> <!-- end search form  -->
             
         <div id="aboutHome">
-            <p>Umbrella is a collaborate project to browse and share books in real and relative spaces.</p>
-            <br>
-            <p class="smallFont"><a href="#">More</a> /<a href="#"> Mail</a></p>
+            <p>Umbrella Library is a place to index and share book collections. 
+It is based on Open Library, a project of Archive.org. 
+This library was initiated by the Umbrella group, 
+a coalition of independent arts organisations in Mumbai.</p>			
         </div>
+        <br>
+	
+        <p class="smallFont"><a href="#">Mail</a></p>
+        <p class="smallFont"><a href="#" class="linkModal">Project credits</a></p>

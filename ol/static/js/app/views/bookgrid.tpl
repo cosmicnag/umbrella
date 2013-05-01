@@ -5,7 +5,9 @@
 <% } else { %>
     <div class="placeholderImg">
         <p><%= title %></p>
-        <p class="smallFont"><em>Dummy author</em></p>
+        <% for (a in author_names) { if (author_names.hasOwnProperty(a)) { %>
+        <p class="smallFont"><em><%= author_names[a] %></em></p>
+        <% } } %>
     </div>
 <% } %>
 

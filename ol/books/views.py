@@ -6,6 +6,7 @@ from django.shortcuts import render_to_response,get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse
 import re
 import math
 from helpers.book import get_authors, get_genres
@@ -57,6 +58,8 @@ def signin(request):
 def borrow(request):
     id = request.POST.get("id", None)
     message = request.POST.get("message", "")
+    lenders = request.POST.get("lenders", "")
+
     user = request.user
     if not user.is_authenticated():
         return render_to_json_response({'error':'Not logged in.'})
@@ -112,6 +115,18 @@ def books(request):
 #        book_list = list(books.find(find).sort(what,direction=int(by+"1")).limit(8))
         for book in book_list:
             book['_id']=str(book['_id'])
+            book_model = Book.objects.get(mongo_id = book['_id'])
+            book['lenders'] = book_model.lenders_json()
+            book['author_names'] = []
+            if book.has_key('authors'):
+                for a in book['authors']:
+                    if a.has_key('author'):
+                        key = a['author']['key']
+                    elif a.has_key('type') and a['type'].has_key('author'):
+                        key = a['type']['author']['key']
+                    #import pdb; pdb.set_trace()
+                    author = db.authors.find_one({'key': key})
+                    book['author_names'].append(author['name'])
 
         return render_to_json_response({
             'items':list(book_list),
@@ -149,3 +164,8 @@ def genres(request, q):
 
 def index(request):
     return render_to_response('index.jade')
+
+def update(request):
+    from tasks import update_all
+    update_all.delay()
+    return HttpResponse("Updating in the background, refresh the books list in a couple minutes and you should see your updates.")

@@ -1,4 +1,4 @@
-define ['marionette','tpl!app/views/menu.tpl', 'cs!app/helpers/book', 'cs!app/core/mediator'],(Marionette,template,BookHelper, mediator) ->
+define ['marionette','tpl!app/views/menu.tpl', 'cs!app/helpers/book', 'cs!app/core/mediator'],(Marionette, template, BookHelper, mediator) ->
     class MenuView extends Marionette.ItemView
         template:template
         initialize:(options) ->
@@ -6,7 +6,7 @@ define ['marionette','tpl!app/views/menu.tpl', 'cs!app/helpers/book', 'cs!app/co
             @listenTo mediator.events, "search:queried", (queryObj) =>
                 @ui.querystring.val(queryObj.query)
             @listenTo mediator.events, "signedin", () =>
-                @ui.userBtns.text("Signed in")    
+                @ui.userBtns.text("Signed in")
 
         ui:
             querystring: '#querystring'
@@ -16,7 +16,9 @@ define ['marionette','tpl!app/views/menu.tpl', 'cs!app/helpers/book', 'cs!app/co
             'click #signupBtn': 'signup'
             'click #signinBtn': 'signin'
 
-        submitSearch: () ->
+        submitSearch: (e) ->
+            e.preventDefault()
+            console.log(BookHelper)
             BookHelper.fireQuery() #TODO: pass args
 
         signup: (e) ->
