@@ -15,6 +15,8 @@ define ['marionette','tpl!app/views/menu.tpl', 'cs!app/helpers/book', 'cs!app/co
             'submit #searchForm': 'submitSearch'
             'click #signupBtn': 'signup'
             'click #signinBtn': 'signin'
+            'click .mailModal': 'mail'
+            'click .creditsModal': 'credits'
 
         submitSearch: (e) ->
             e.preventDefault()
@@ -28,3 +30,11 @@ define ['marionette','tpl!app/views/menu.tpl', 'cs!app/helpers/book', 'cs!app/co
         signin: (e) ->
             e.preventDefault()
             mediator.commands.execute "modal", "signin"
+
+        mail: (e) ->
+            e.preventDefault()
+            mediator.commands.execute "modal", "mail"
+
+        credits: (e) ->
+            e.preventDefault()
+            mediator.commands.execute "modal", "credits"

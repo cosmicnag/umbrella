@@ -1,4 +1,4 @@
-define ['marionette','tpl!app/views/bookgrid.tpl','tpl!app/views/booklist.tpl','tpl!app/views/bookdetail.tpl','cs!app/core/mediator'],(Marionette,gridtemplate,listtemplate,detailtemplate,mediator) ->
+define ['marionette','jquery','app/ol','tpl!app/views/bookgrid.tpl','tpl!app/views/booklist.tpl','tpl!app/views/bookdetail.tpl','cs!app/core/mediator'],(Marionette,$,OL,gridtemplate,listtemplate,detailtemplate,mediator) ->
 
     class BookBaseView extends Marionette.ItemView
         events:
@@ -29,7 +29,7 @@ define ['marionette','tpl!app/views/bookgrid.tpl','tpl!app/views/booklist.tpl','
             @listenTo mediator.events,"filters:view",(viewtype) =>
                 @attributes.view = viewtype
                 @render()
-            
+
         itemView: @getItemView
         getItemView: (item)->
             @attributes = {view:'grid'} if typeof @attributes is "undefined"

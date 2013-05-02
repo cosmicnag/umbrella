@@ -4,8 +4,7 @@
                             <img alt="" src="<%= image_url %>">
                         <% } else { %>
                             <div class="placeholderImg">
-                                <p><%= title %></p>
-                                <p class="smallFont">Dummy author</p>
+			           <img src="/static/img/placeholder.jpg" alt="placeholder-image">
                             </div>
                         <% } %>
 
@@ -21,7 +20,6 @@
                         <% if (typeof(subjects) != 'undefined') { %>
                         <div class="bookGenre"><% for (subject in subjects) { %> <span class="subject"><%= subjects[subject] %></span> <% } %></div>
                         <% } %>
-                        <div class="bookLinkOL"><a href="http://openlibrary.org<%= key %>">OL Link</a></div>
                         <br>
                         <% if (typeof(description) != 'undefined') { %>
                         <div class="description"><%= description.value %></div>
@@ -37,7 +35,7 @@
                         </div>
 
                         <% } %>
-
+                        <div class="bookLinkOL"><a href="http://openlibrary.org<%= key %>">OL Link</a></div>
                         <a href="javascript:void(0);" class="linkModal contactLender">Borrow</a>
                     </div> <!-- end col 75  -->
                     <div class="clear"></div>

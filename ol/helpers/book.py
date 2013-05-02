@@ -1,6 +1,7 @@
 from books.models import *
 from pymongo import MongoClient
 import re
+from bson.objectid import ObjectId
 
 connection = MongoClient()
 db = connection.ol
@@ -10,7 +11,8 @@ authors = db.authors
 def processborrow(borrow):
     lenderemails = [l.email for l in borrow.book.lender_set.all()]
     message = borrow.message
-    title = books.find_one(_id=borrow.book.mongo_id)['title']
+    oid = ObjectId(borrow.book.mongo_id)
+    title = books.find_one(oid)['title']
     from books.tasks import sendmail
     sendmail.delay(borrow.user.username,borrow.user.email,lenderemails,message,title) 
     #TODO Check SQL

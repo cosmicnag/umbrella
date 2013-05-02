@@ -3,7 +3,7 @@
         <div id="logo"><a href="">
 	umbrella library
 	<!--<img src="/static/svg/umbrella.svg" alt="" class="umbrellaLogo">-->
-	<img src="/static/img/umbrella1.gif" alt="" class="umbrellaLogo">
+	<img src="/static/img/umbrella.gif" alt="" class="umbrellaLogo">
 	
 	</a></div>
         
@@ -24,11 +24,12 @@
             
         <div id="aboutHome">
             <p>Umbrella Library is a place to index and share book collections. 
-It is based on Open Library, a project of Archive.org. 
+It is based on <a href="http://openlibrary.org" target="_blank">Open Library</a>, a project of <a href="http://archive.org" target="_blank">Archive.org.</a> 
 This library was initiated by the Umbrella group, 
 a coalition of independent arts organisations in Mumbai.</p>			
         </div>
-        <br>
 	
-        <p class="smallFont"><a href="#">Mail</a></p>
-        <p class="smallFont"><a href="#" class="linkModal">Project credits</a></p>
+	<div class="menuConnect">
+           <p><a href="#" class="mailModal">Mail</a></p>
+           <p><a href="#" class="creditsModal">Project credits</a></p>
+       </div>

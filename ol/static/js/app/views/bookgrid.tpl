@@ -1,13 +1,12 @@
 <% if (has_cover) { %>
     <img alt="" src="<%= image_url %>">
+    <p><%= title %></p>
        
 
 <% } else { %>
     <div class="placeholderImg">
-        <p><%= title %></p>
-        <% for (a in author_names) { if (author_names.hasOwnProperty(a)) { %>
-        <p class="smallFont"><em><%= author_names[a] %></em></p>
-        <% } } %>
+	<img src="/static/img/placeholder.jpg" alt="placeholder-image">
+       <p><%= title %></p>
     </div>
 <% } %>
 

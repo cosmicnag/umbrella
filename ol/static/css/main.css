@@ -52,9 +52,9 @@ html, body  {
 body {
     background-color: #fff;
     color: #666;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.4;
-    font-family: 'Ubuntu Condensed', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     
 }
 
@@ -163,6 +163,10 @@ textarea {
     font-size: 80%;
 }
 
+.largerFont, .menuConnect {
+    font-size: 110%;
+}
+
 .floatLeft {
     float: left;
 }
@@ -180,7 +184,7 @@ textarea {
 
 /* fonts */
 
-#menu, #searchForm input, #sortCollections select, .reset, .tt-dropdown-menu, #author, #genre, .tt-hint, #sortCollections select {
+#menu, #searchForm input, .fontCondensed, #sortCollections select, .reset, .tt-dropdown-menu, #author, #genre, .tt-hint, #sortCollections select, .menuConnect, .bookLinkOL, .contactLender {
     font-family: 'Open Sans Condensed', sans-serif; /* add more later  */
 }
 
@@ -273,24 +277,32 @@ textarea {
 }*/
 
 #menu, #searchForm input {
-    font-size: 130%;
+    font-size: 120%;
 /*    text-align: center;*/
 }
 
-#menu li {
-    padding: 6px 0px;   
+#menu li, .menuConnect p {
+    padding: 5px 0px;   
 }
 
 #menu li a {
 }
 
 #aboutHome {
-    padding: 14px 0px;
+    padding: 24px 0px;
     font-size: 80%;
-    margin-top: 30px;
     max-width: 280px;
-    margin: 0 auto;
+/*    margin-top: 30px;
+    margin: 0 auto;*/
     position: relative;
+}
+
+#aboutHome a {
+    color: #457c99;
+}
+
+#aboutHome a:hover {
+    color: #b9ac6a;
 }
 
 /* end menu */
@@ -317,7 +329,7 @@ textarea {
 
 #sortCollections select {
     display: inline-block;
-    background: #79869d; /* formerly yellow: eecc44 or blue 778899 */
+    background: #b5bc9a; /* formerly yellow: eecc44 or blue 778899 */
     border: none;
     padding: 1px 4px;
     -webkit-appearance: none;
@@ -363,6 +375,19 @@ textarea {
 	display: inline-block;
 }
 
+.bookGenre {
+	font-size: 90%;
+}
+
+.bookGenre .subject:after {
+	content: "/";
+	padding-left: 4px;
+}
+
+.bookGenre .subject:last-of-type:after {
+	content: "";
+}
+
 .listView {
 	margin-top: -1px;
 }
@@ -370,7 +395,7 @@ textarea {
 .listView div {
 	width: 20px;
 	border-bottom: 1px solid #888;
-	padding: 3.5px 0;
+	padding: 3px 0;
 }
 
 .gridView div {
@@ -389,10 +414,9 @@ textarea {
 }
 
 .tooltip {
-    font-size: 64%;
-    font-family: Helvetica, sans-serif;
+    font-size: 80%;
     background: #79869d;
-    padding: 2px 4px;
+    padding: 2px 6px;
     color: #eee;
     position: absolute;
     bottom:-32px;
@@ -421,16 +445,17 @@ textarea {
 
 /* form modals */
 
-.formModal {
+.formModal, #creditsModalBox {
     border: 4px double #a1aabb;
     padding: 20px;
     text-align: center;
     margin: 0 auto;
     position: relative;
     background: rgba(255,255,255,0.6);
+    max-width: 500px;	
 }
 
-.formModal:after {
+/*.formModal:after {
     content: "";
     position: absolute;
     border: 4px double khaki;
@@ -439,7 +464,7 @@ textarea {
     left: -12px;
     top: -12px;
     z-index: -1;
-}
+}*/
 
 .formModal label {
     font-size: 90%;
@@ -460,6 +485,7 @@ textarea {
 
 .formModal input, .formModal textarea {
     margin-bottom: 10px;
+    min-width: 180px;
 }
 
 .formModal textarea {
@@ -482,6 +508,7 @@ textarea {
     position: relative;
     margin: 0 0 10px 0;
     text-align: center;	
+    font-size: 90%;
 }
 
 #browseGridView .col25:hover .gridBorrowOL {
@@ -494,10 +521,6 @@ textarea {
 }
 
 .placeholderImg {
-    background: #666;
-    color: #fff;
-    padding: 20px;
-   min-height: 280px; /* TODO change later */	
 }
 
 #browseDetailsView .col25, #browseDetailsView .col75 {
@@ -510,7 +533,6 @@ textarea {
 
 .description {
     padding: 0 0 10px 0;
-    font-size: 90%;
 }
 
 .lenderBlock, .browseDetailEach, .browseListEach {
@@ -537,13 +559,18 @@ textarea {
     padding: 10px 0;
 }
 
-.browseListEach {
-    padding: 18px 10px;
+.browseDetailEach .col75 {
+    font-size: 90%;
 }
 
-.browseListEach .contactLender {
-    float: right;   
+.browseListEach {
+    padding: 18px 10px;
+    font-size: 90%;
 }
+
+/*.browseListEach .contactLender {
+    float: right;   
+}*/
 
 .gridBorrowOL {
     display: none;
@@ -551,15 +578,15 @@ textarea {
 
 .bookLinkOL, .contactLender {
     color: #fff;
-    padding: 2px 4px;
+    padding: 3px 8px;
     text-align: center;
     display: inline-block;
-/*    min-width: 128px;*/
-    font-size: 90%;
+    text-transform: uppercase;
+    font-size: 110%;
 }
 
 .bookLinkOL {
-    background: #79869d; 
+    background: #7a869e;
 }
 
 .bookLinkOL a {
@@ -567,8 +594,9 @@ textarea {
 }
 
 .contactLender {
-    background: #a57c99;
+    background: #b5bc9a; /*previously #a57c99*/
     margin-top: 6px;
+
 }
 
 
@@ -607,10 +635,17 @@ textarea {
     padding: 2px 4px;
 }
 
+#author::-webkit-input-placeholder, #genre::-webkit-input-placeholder {
+	color: #fff;
+}
 
-#author::-webkit-input-placeholder, #genre::-webkit-input-placeholder, #author::-moz-placeholder, #genre::-moz-placeholder, #author:-ms-input-placeholder, #genre:-ms-input-placeholder {
-    color: #fff;  /* TODO black bg may cause usability issues */
-} /* test in this browser */
+#author::-moz-placeholder, #genre::-moz-placeholder {
+    color: #fff;
+}
+
+#author:-ms-input-placeholder, #genre:-ms-input-placeholder {
+    color: #fff;
+}
 
 .tt-query:focus {
     outline: none;
@@ -621,34 +656,36 @@ textarea {
 }
 
 #author {
-    background-color: #79869d; /* formerly 778899 */
+    background-color: #7a869e; /* formerly 778899 */
 }
 
 #genre {
-    background-color: #e4d663; /* formerly 778899 */
+    background-color: #857c99; /* formerly 778899 */
 }
 
 .tt-dropdown-menu {
     border-left: 1px solid #ddd;
     border-right: 1px solid #ddd;
+    text-align: left;
 }
 
 .tt-suggestion {
     background: #fff;
-    font-size: 90%;
     padding: 4px;
     border-bottom: 1px solid #ddd;
 }
 
 .twitter-typeahead:first-of-type .tt-suggestion:hover {
-    background: #79869d;
+    background: #7a869e;
     color: #fff;
 }
 
 .tt-suggestion:hover {
-    background-color: #dece44; /* formerly 778899 */
+    background-color: #857c99; /* formerly 778899 */
     color: #fff;
 }
+
+
 
 /* autocomplete styling */
 

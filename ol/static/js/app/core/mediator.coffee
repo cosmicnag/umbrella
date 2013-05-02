@@ -6,6 +6,7 @@ define ['backbone','marionette','require','cs!app/ol','cs!app/core/globals'],(Ba
   commands.addHandler "firequery",(querystring,genre,author,lender,sort) =>
     author = if author != '' then encodeURIComponent(author) else 'all'
     genre = if genre != '' then encodeURIComponent(genre) else 'all'
+    querystring = encodeURIComponent(querystring)
     console.log "author", author
     console.log "genre", genre
     if querystring != ''
@@ -24,7 +25,7 @@ define ['backbone','marionette','require','cs!app/ol','cs!app/core/globals'],(Ba
 
   commands.addHandler "signin",() ->
     globals.set 'issignedin',true
-    events.trigger "signedin" 
+    events.trigger "signedin"
 
   requests.addHandler "querystring",()->
     OL.content.currentView.filter.currentView.ui.querystring.val()

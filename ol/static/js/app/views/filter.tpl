@@ -1,6 +1,6 @@
 
 <div id="sortCollections">
-    <input type="" id="querystring" placeholder="Find">
+    <input type="" id="querystring" placeholder="Find" class="fontCondensed">
     <input type="text" id="author" placeholder="Author" />
     <input type="text" id="genre" placeholder="Genre" />
  

@@ -17,6 +17,15 @@ define ['require', 'jquery'], (requirei, $) ->
                         $('.overlay').show()
                         console.log args[0]
                         OL.modal.show(new BorrowModalView({model: args[0]}))
+                when 'mail'
+                    require ['cs!app/ol', 'jquery', 'cs!app/views/modals/mail','backbone'], (OL, $, MailModalView,Backbone) ->
+                        $('.overlay').show()
+                        OL.modal.show(new MailModalView())
+                when 'credits'
+                    require ['cs!app/ol', 'jquery', 'cs!app/views/modals/credits','backbone'], (OL, $, CreditsModalView,Backbone) ->
+                        $('.overlay').show()
+                        OL.modal.show(new CreditsModalView())
+
         closeModal: () ->
             @removeCloseHandler()
             require ['cs!app/ol','jquery'],(OL,$) ->

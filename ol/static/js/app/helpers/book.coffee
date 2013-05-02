@@ -29,7 +29,7 @@ define ['cs!app/ol','cs!app/views/menu','cs!app/views/layouts/content','cs!app/v
                 lender: lender
                 sort: sort
             }
-            books = new Books [], queryObj
+            OL.collections.books = books = new Books [], queryObj
             
             #mediator.events.trigger "search:queried", queryObj
             books.fetch {

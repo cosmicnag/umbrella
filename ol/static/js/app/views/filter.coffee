@@ -71,6 +71,7 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','typeahea
             'click #listview' :'showlistview'
             'click #gridview' : 'showgridview'
             'click #reset': 'resetQuery'
+            'click #nextPage': 'nextPage'
             #'change #author, #genre, #lender, #sort': 'fireQuery'
         fireQuery: ()->
             [@author,@genre,@lender,@sort] = [window.encodeURIComponent(@ui.author.val()),@ui.genre.val(),@ui.lender.val(),@ui.sort.val()]
@@ -82,6 +83,8 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','typeahea
             mediator.events.trigger "filters:view",'list'
         showgridview:() ->
             mediator.events.trigger "filters:view",'grid'
+        nextPage:() ->
+            OL.collections.books.requestNextPage()
 
         resetQuery: ()->
             @ui.author.val('all')

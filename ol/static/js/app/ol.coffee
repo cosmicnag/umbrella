@@ -1,5 +1,8 @@
 define ['marionette','cs!app/core/router','backbone'],(Marionette,OLRouter,Backbone) ->
-    OL = new Marionette.Application()
+    OL = new Marionette.Application
+        collections: {}
+        
+    
     OL.addRegions
         menu: '#menuBlock'
         content: '#contentBlock',
@@ -8,4 +11,5 @@ define ['marionette','cs!app/core/router','backbone'],(Marionette,OLRouter,Backb
         console.log "init"
         @router = new OLRouter()
         Backbone.history.start()
+    window.OL = OL
     OL
