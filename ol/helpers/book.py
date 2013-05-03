@@ -9,7 +9,7 @@ books = db.books
 authors = db.authors
 
 def processborrow(borrow):
-    lenderemails = [l.email for l in borrow.book.lender_set.all()]
+    lenderemails = [l.email for l in borrow.lenders.all()]
     message = borrow.message
     oid = ObjectId(borrow.book.mongo_id)
     title = books.find_one(oid)['title']

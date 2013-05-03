@@ -95,6 +95,7 @@ class Borrow(BaseModel):
     user = models.ForeignKey(User)
     book = models.ForeignKey(Book)
     message = models.TextField(blank=True)
+    lenders = models.ManyToManyField(Lender)
 
 class LenderBook(models.Model):
 	lender = models.ForeignKey(Lender)

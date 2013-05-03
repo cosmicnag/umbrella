@@ -59,13 +59,17 @@ def borrow(request):
     id = request.POST.get("id", None)
     message = request.POST.get("message", "")
     lenders = request.POST.get("lenders", "")
-
+    lender_ids = lenders.split(",")
     user = request.user
     if not user.is_authenticated():
         return render_to_json_response({'error':'Not logged in.'})
     book = get_object_or_404(Book,mongo_id=id)
     borrow = Borrow(user=user,book=book,message=message)
     borrow.save() 
+    for lender_id in lender_ids:
+        lender = Lender.objects.get(pk=int(lender_id))
+        borrow.lenders.add(lender)
+    borrow.save()
     from helpers.book import processborrow
     processborrow(borrow)
     return render_to_json_response({'success':'success'})
