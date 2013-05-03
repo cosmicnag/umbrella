@@ -26,7 +26,7 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','typeahea
                 $('#author').on 'typeahead:selected', (e, datum) =>
                     console.log datum
                     querystring = mediator.requests.request "querystring"
-                    mediator.commands.execute "firequery", querystring, 'all', datum.value, @ui.lender.val(), @ui.sort.val()
+                    mediator.commands.execute "firequery", querystring, @ui.genre.val(), datum.value, @ui.lender.val(), @ui.sort.val()
 
                 $('#genre').typeahead
                     name: 'genre'
@@ -37,13 +37,13 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','typeahea
                 $('#genre').on 'typeahead:selected', (e, datum) =>
                     console.log datum
                     querystring = mediator.requests.request "querystring"
-                    mediator.commands.execute "firequery", querystring, datum.value, 'all', @ui.lender.val(), @ui.sort.val()
+                    mediator.commands.execute "firequery", querystring, datum.value, @ui.author.val(), @ui.lender.val(), @ui.sort.val()
 
                 $('#querystring').on "keyup", (e) =>
                     console.log "querystring keyup"
                     if (e.keyCode == 13)
-                        qstring = mediator.requests.request "querystring"
-                        mediator.commands.execute "firequery", qstring, 'all', 'all', @ui.lender.val(), @ui.sort.val()
+                        qstring = @ui.querystring.val()
+                        mediator.commands.execute "firequery", qstring, @ui.genre.val(), @ui.author.val(), @ui.lender.val(), @ui.sort.val()
 
                 $lenders.push($("<option>").attr('value',obj[0]).text(obj[1]))  for obj in _.pairs(filterdata.lenders)
                 #$genres.push($("<option>").attr('value',obj).text(obj)) for obj in filterdata.genres
@@ -55,7 +55,7 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','typeahea
                 console.log "search query event"
                 #@ui.author.val(queryObj.author)
                 #@ui.genre.val(queryObj.genre)
-                @ui.lender.val(queryObj.lender)
+                #@ui.lender.val(queryObj.lender)
                 
         ui:
             author: '#author'
@@ -72,7 +72,9 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','typeahea
             'click #gridview' : 'showgridview'
             'click #reset': 'resetQuery'
             'click #nextPage': 'nextPage'
+            'click #prevPage': 'prevPage'
             'change #lender': 'fireQuery'
+            'change #sort': 'fireQuery'
             #'change #author, #genre, #lender, #sort': 'fireQuery'
         fireQuery: ()->
             [@author,@genre,@lender,@sort] = [window.encodeURIComponent(@ui.author.val()),@ui.genre.val(),@ui.lender.val(),@ui.sort.val()]
@@ -87,12 +89,14 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','typeahea
             mediator.events.trigger "filters:view",'grid'
         nextPage:() ->
             OL.collections.books.requestNextPage()
+        prevPage:() ->
+            OL.collections.books.requestPreviousPage()
 
         resetQuery: ()->
-            @ui.author.val('all')
-            @ui.genre.val('all')
-            @ui.lender.val('all')
-            @ui.sort.val('all')
+            @ui.author.val('')
+            @ui.genre.val('')
+            @ui.lender.val('')
+            @ui.sort.val('')
             @ui.search.val('')
             @fireQuery()
 

@@ -11,7 +11,10 @@
         <!--<span class="reset" id="search">Search</span>-->
         <span class="reset" id="reset">Reset</span>
 
-
+        <span id="pagination">
+            <span id="prevPage">&lt;</span> 
+            <span id="nextPage">&gt;</span>
+        </span>
     <div class="clear"></div>
     </div> <!-- end sort collections  -->
 

@@ -351,6 +351,10 @@ textarea {
     cursor: pointer;
 }
 
+#prevPage, #nextPage {
+    cursor: pointer;
+}
+
 .listGridView {
     float: right;
     margin: 4px 0;
