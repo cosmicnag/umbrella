@@ -72,10 +72,12 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','typeahea
             'click #gridview' : 'showgridview'
             'click #reset': 'resetQuery'
             'click #nextPage': 'nextPage'
+            'change #lender': 'fireQuery'
             #'change #author, #genre, #lender, #sort': 'fireQuery'
         fireQuery: ()->
             [@author,@genre,@lender,@sort] = [window.encodeURIComponent(@ui.author.val()),@ui.genre.val(),@ui.lender.val(),@ui.sort.val()]
-            @querystring = mediator.requests.request "querystring"
+            @querystring = @ui.querystring.val()
+            #@querystring = mediator.requests.request "querystring"
             mediator.commands.execute "firequery",@querystring,@genre,@author,@lender,@sort
         showdetailview:() ->
             mediator.events.trigger "filters:view",'detail'

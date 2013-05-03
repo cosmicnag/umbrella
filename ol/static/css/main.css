@@ -297,11 +297,11 @@ textarea {
     position: relative;
 }
 
-#aboutHome a {
+#aboutHome a, #creditsModalBox a {
     color: #457c99;
 }
 
-#aboutHome a:hover {
+#aboutHome a:hover, #creditsModalBox a:hover {
     color: #b9ac6a;
 }
 
@@ -448,12 +448,19 @@ textarea {
 .formModal, #creditsModalBox {
     border: 4px double #a1aabb;
     padding: 20px;
-    text-align: center;
     margin: 0 auto;
     position: relative;
     background: rgba(255,255,255,0.6);
     max-width: 500px;	
 }
+.formModal {
+    text-align: center;
+}
+
+#creditsModalBox {
+    font-size: 90%;
+    text-align: left;
+} 
 
 /*.formModal:after {
     content: "";
@@ -504,7 +511,7 @@ textarea {
 
 
 #browseGridView .col25 {
-    padding: 0px 16px 28px 16px;
+    padding: 0px 16px 32px 16px;
     position: relative;
     margin: 0 0 10px 0;
     text-align: center;	
@@ -523,9 +530,13 @@ textarea {
 .placeholderImg {
 }
 
-#browseDetailsView .col25, #browseDetailsView .col75 {
+/*#browseDetailsView .col25, #browseDetailsView .col75 {
     padding: 10px;
-}
+}*/
+
+#browseGridView .browseDetailEach .col25 {
+	padding: 0 16px; 0 0;
+} 
 
 #browseGridView .col25:nth-of-type(4n+1) {
     clear: both;
@@ -536,7 +547,7 @@ textarea {
 }
 
 .lenderBlock, .browseDetailEach, .browseListEach {
-    border-bottom: 2px solid #e5e5e5;   
+    border-bottom: 1px dotted #bbb;   
 }
 
 .lenderBlockText {
@@ -556,7 +567,7 @@ textarea {
 }
 
 .browseDetailEach {
-    padding: 10px 0;
+    padding: 20px 0;
 }
 
 .browseDetailEach .col75 {
@@ -695,7 +706,7 @@ textarea {
 
 @media only screen and (max-width: 1000px) {
     #content {
-        padding: 50px 0 0;    
+        padding: 0;    
     }    
     
     #browseGridView .col25 {
