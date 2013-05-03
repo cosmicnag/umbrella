@@ -10,6 +10,8 @@ from django.http import HttpResponse
 import re
 import math
 from helpers.book import get_authors, get_genres
+from django.core.mail import send_mail
+
 
 def lenders(request):
     if request.method == 'GET':
@@ -165,6 +167,14 @@ def authors(request, q):
 def genres(request, q):
     genres = get_genres(q)
     return render_to_json_response(genres)
+
+@csrf_exempt
+def mail(request):
+    message = request.POST.get("message")
+    email = request.POST.get("email")
+    send_mail("Contact on tiptiptip.org", message, email, ['info@camputer.org'])
+    return render_to_json_response({'success': 'success'})
+    
 
 def index(request):
     return render_to_response('index.jade')
