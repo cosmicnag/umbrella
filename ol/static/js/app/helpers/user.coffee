@@ -6,18 +6,21 @@ define ['require','cs!app/core/mediator'],(require,mediator) ->
                     username: username
                     password: password
                     email: email
-                callback = (data) ->
+                success_callback = (data) ->
                     mediator.commands.execute 'signin'
                     mediator.commands.execute 'closemodal'
-                ajaxutil.ajax 'signup',tosend,'POST',callback
+                error_callback = (data) ->
+                    alert data.error
+                ajaxutil.ajax 'signup',tosend,'POST',success_callback,error_callback
         signIn: (username,password) ->
             require ['cs!app/utils/ajax'],(ajaxutil) =>
                 tosend =
                     username: username
                     password: password
-                callback = (data) ->
+                success_callback = (data) ->
                     mediator.commands.execute 'signin'
                     mediator.commands.execute 'closemodal'
-
-                ajaxutil.ajax 'signin',tosend,'POST',callback
+                error_callback = (data) ->
+                    alert data.error
+                ajaxutil.ajax 'signin',tosend,'POST',success_callback,error_callback
     new UserHelper()

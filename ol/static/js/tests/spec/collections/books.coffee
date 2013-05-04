@@ -1,5 +1,6 @@
-define ['chai'], (chai) ->
+define ['chai', 'chai-backbone'], (chai, chaiBackbone) ->
     console.log chai
+    chai.use(chaiBackbone)
     [assert, expect, should] = [chai.assert, chai.expect, chai.should]
     describe "testing books", ->
       done = false

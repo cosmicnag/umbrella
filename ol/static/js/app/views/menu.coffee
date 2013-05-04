@@ -1,18 +1,26 @@
-define ['marionette','tpl!app/views/menu.tpl', 'cs!app/helpers/book', 'cs!app/core/mediator'],(Marionette,template,BookHelper, mediator) ->
+define ['marionette','tpl!app/views/menu.tpl', 'cs!app/helpers/book', 'cs!app/core/mediator'],(Marionette, template, BookHelper, mediator) ->
     class MenuView extends Marionette.ItemView
         template:template
         initialize:(options) ->
             super(options)
             @listenTo mediator.events, "search:queried", (queryObj) =>
                 @ui.querystring.val(queryObj.query)
+            @listenTo mediator.events, "signedin", () =>
+                @ui.userBtns.text("Signed in")
+
         ui:
             querystring: '#querystring'
+            userBtns: '.userBtns'
         events:
             'submit #searchForm': 'submitSearch'
             'click #signupBtn': 'signup'
             'click #signinBtn': 'signin'
+            'click .mailModal': 'mail'
+            'click .creditsModal': 'credits'
 
-        submitSearch: () ->
+        submitSearch: (e) ->
+            e.preventDefault()
+            console.log(BookHelper)
             BookHelper.fireQuery() #TODO: pass args
 
         signup: (e) ->
@@ -22,3 +30,11 @@ define ['marionette','tpl!app/views/menu.tpl', 'cs!app/helpers/book', 'cs!app/co
         signin: (e) ->
             e.preventDefault()
             mediator.commands.execute "modal", "signin"
+
+        mail: (e) ->
+            e.preventDefault()
+            mediator.commands.execute "modal", "mail"
+
+        credits: (e) ->
+            e.preventDefault()
+            mediator.commands.execute "modal", "credits"

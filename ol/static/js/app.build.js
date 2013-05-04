@@ -61,6 +61,8 @@
         "cs!app/views/modals/signin",
         "cs!app/views/modals/borrow",
         "cs!app/views/modals/signup",
+        "cs!app/views/modals/mail",
+        "cs!app/views/modals/credits",
         "cs!app/collections/books",
         "cs!app/helpers/user",
         "cs!app/helpers/modal",

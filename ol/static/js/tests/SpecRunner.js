@@ -19,6 +19,7 @@ require.config({
         jquery:'libs/jquery-1.8.3.min',
         typeahead: 'libs/typeahead.min',
         chai: 'libs/chai',
+        'chai-backbone': 'libs/chai-backbone',
         jasmine: 'libs/jasmine-1.3.1/jasmine',
         'jasmine-html': 'libs/jasmine-1.3.1/jasmine-html',
         'jasmine-require': 'libs/jasmine-1.3.1/jasmine-require',
@@ -49,6 +50,9 @@ require.config({
             deps:['jquery'],
             exports: '$'
         },
+        'chai-backbone': {
+            deps:['chai']
+        },
         'jasmine-html': {
             deps: ['jasmine'],
             exports: 'jasmine'
@@ -57,7 +61,7 @@ require.config({
     }
 });
 
-require(['underscore', 'jquery', 'jasmine-html'], function(_, $, jasmine){
+require(['underscore', 'jquery', 'jasmine-html', 'cs!app/ol'], function(_, $, jasmine,OL){
  
     var jasmineEnv = jasmine.getEnv();
     jasmineEnv.updateInterval = 1000;
@@ -72,6 +76,8 @@ require(['underscore', 'jquery', 'jasmine-html'], function(_, $, jasmine){
 
     var specs = [];
     specs.push('cs!spec/collections/books');
+    specs.push('cs!spec/ol');
+    specs.push('cs!spec/views/filter');
 //    specs.push('spec/models/TodoSpec');
 //    specs.push('spec/views/ClearCompletedSpec');
 //    specs.push('spec/views/CountViewSpec');
@@ -83,6 +89,7 @@ require(['underscore', 'jquery', 'jasmine-html'], function(_, $, jasmine){
 
 
     $(function(){
+        OL.start();
         require(specs, function(){
             jasmineEnv.execute();
         });
