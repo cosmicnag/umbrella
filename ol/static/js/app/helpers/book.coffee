@@ -29,7 +29,7 @@ define ['cs!app/ol','cs!app/views/menu','cs!app/views/layouts/content','cs!app/v
                 lender: lender
                 sort: sort
             }
-            books = new Books [], queryObj
+            OL.collections.books = books = new Books [], queryObj
             
             #mediator.events.trigger "search:queried", queryObj
             books.fetch {
@@ -41,19 +41,23 @@ define ['cs!app/ol','cs!app/views/menu','cs!app/views/layouts/content','cs!app/v
             $.getJSON "/api/filters", {}, (response) =>
                 mediator.events.trigger "filters:loaded",response
 
-        borrow: (id,message) ->
+        borrow: (id,message,lender_ids) ->
             issignedin = mediator.requests.request 'issignedin'
             if not issignedin
                 alert 'Please sign in / sign up.'
                 return
             require ['cs!app/utils/ajax'],(ajaxutil) =>
+                lenders = lender_ids.join(",")
                 tosend =
                     id: id
                     message: message
+                    lenders: lenders
                 success_closure = (data) ->
                     console.log data
                     mediator.commands.execute 'closemodal'
-                ajaxutil.ajax 'borrow',tosend,'POST',success_closure
+                error_closure = (data) ->
+                    alert data.error
+                ajaxutil.ajax 'borrow',tosend,'POST',success_closure, error_closure
     
 
     new BookHelper()

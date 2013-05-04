@@ -10,47 +10,6 @@ html, body  {
 	width: 100%;
 }
 
-body {
-	background-color: #fff;
-/* 	font-family:sans-serif;
- */	color: #222;
-	font-size: 16px;
-	line-height: 1.4;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* COLUMNS */
-
-/*.col25 {
-	width: 25%;
-}
-
-.col33 {
-	width:33.33%;
-}
-
-.col50 {
-	width: 50%;
-}
-
-.col75 {
-	width:75%;
-}
-*/
-
-/* COLUMNS */
-
-/* GLOBAL STYLES */
-
-
-.clear { 
-	clear: both;
-} 
-
 /* LIGHTBOX */
     
 .overlay {
@@ -63,13 +22,12 @@ img {
     background: rgba(255,255,255,0.9);
     display: none;
     z-index: 10000;
-	
-	text-align: center;
+    text-align: center;
 }
 
 .lightBoxBlock {
-	display: inline-block;
-/*     width: 80%;
+/*	display: inline-block;
+     width: 80%;
 height: 90%;
 margin: 0 auto;
 margin-top: 5%;
@@ -82,6 +40,7 @@ margin-bottom: 5%;
 .lightBox {
     padding: 10px;
     position: relative;
+    display: inline-block;
 }
 
 .nextLightBox, .prevLightBox, .closeLightBox {
