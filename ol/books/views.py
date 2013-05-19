@@ -85,6 +85,7 @@ def books(request):
         #limit = request.GET.get('limit',50)
         author = request.GET.get("author", None)
         genre = request.GET.get("genre", None)
+        lender = request.GET.get("lender", None)
         page = int(request.GET.get("page", "1"))
         per_page = int(request.GET.get("per_page", "50"))
         q = request.GET.get("q", None)
@@ -130,9 +131,12 @@ def books(request):
                         key = a['author']['key']
                     elif a.has_key('type') and a['type'].has_key('author'):
                         key = a['type']['author']['key']
+                    else:
+                        key = None
                     #import pdb; pdb.set_trace()
-                    author = db.authors.find_one({'key': key})
-                    book['author_names'].append(author['name'])
+                    if key:
+                        author = db.authors.find_one({'key': key})
+                        book['author_names'].append(author['name'])
 
         return render_to_json_response({
             'items':list(book_list),
