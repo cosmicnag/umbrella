@@ -54,6 +54,11 @@ class Lender(models.Model):
 			book_data_url = "http://openlibrary.org%s.json" % book['url']
 			#book_url = "http://openlibrary.org/api/books?bibkeys=OL:%s" % ol_id
 			book_data = json.loads(urllib2.urlopen(book_data_url).read())
+            if book_data.has_key('works') and len(book_data['works']) > 0 and not book_data.has_key('authors'):
+                work_url = "http://openlibrary.org%s.json" % book_data['works'][0]['key']
+                work_data = json.loads(urllib2.urlopen(work_url).read())
+                if work_data.has_key('authors'):
+                    book_data['authors'] = work_data['authors']
 			if book_data.has_key('authors'):
 				print book_data['authors']
 				author_keys = [a['author']['key'] for a in book_data['authors'] if a.get('author',None)]	

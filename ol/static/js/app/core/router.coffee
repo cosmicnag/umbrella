@@ -3,6 +3,7 @@ define ['marionette','cs!app/core/controller'],(Marionette,OLController) ->
         controller: OLController
         appRoutes:
             "" : "home"
+            "lenders": "lenders"
             "genre/:genre/author/:author/lender/:lender/sort/:sort/query/:query": "query"
             "genre/:genre/author/:author/lender/:lender/sort/:sort": "query"
                 

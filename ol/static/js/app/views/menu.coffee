@@ -15,7 +15,8 @@ define ['marionette','tpl!app/views/menu.tpl', 'cs!app/helpers/book', 'cs!app/co
             'submit #searchForm': 'submitSearch'
             'click #signupBtn': 'signup'
             'click #signinBtn': 'signin'
-            'click .mailModal': 'mail'
+            'click .mailModal': 'mail',
+            'click #lendersBtn': 'lenders',
             'click .creditsModal': 'credits'
 
         submitSearch: (e) ->
@@ -38,3 +39,7 @@ define ['marionette','tpl!app/views/menu.tpl', 'cs!app/helpers/book', 'cs!app/co
         credits: (e) ->
             e.preventDefault()
             mediator.commands.execute "modal", "credits"
+
+        lenders: (e) ->
+            OL = require('app/ol')
+            OL.router.navigate("lenders", {trigger: true})

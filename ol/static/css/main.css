@@ -337,6 +337,8 @@ textarea {
     color: #fff;
     font-size: 100%;
     width: 140px;
+    border-radius: 0;
+    vertical-align: top;
     z-index: 900 !important;/* is this ok?  */
 }
     
@@ -734,6 +736,11 @@ textarea {
     #menuBlock, #browseGridView .col25, .col25, .col30, .col70, .col75, .col50 {
         width: 100%;
         float: none;    
+    }
+
+    #browseGridView .col25 {
+    	width: 50%;
+	float: left;
     }
 
     #menuBlock {

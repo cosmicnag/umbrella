@@ -12,8 +12,11 @@
         <span class="reset" id="reset">Reset</span>
 
         <span id="pagination">
-            <span id="prevPage">&lt;</span> 
-            <span id="nextPage">&gt;</span>
+            <span id="prevPage">Previous Page</span> 
+            <span id="nextPage">Next Page</span>
+        </span>
+        <span id="resultsLoading" style="display:none;">
+            <img src="/static/img/ajax-loader.gif" />
         </span>
     <div class="clear"></div>
     </div> <!-- end sort collections  -->

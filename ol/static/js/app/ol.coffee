@@ -1,4 +1,4 @@
-define ['marionette','cs!app/core/router','backbone'],(Marionette,OLRouter,Backbone) ->
+define ['marionette','cs!app/core/router','jquery','backbone'],(Marionette,OLRouter,$,Backbone) ->
     OL = new Marionette.Application
         collections: {}
         
@@ -11,5 +11,6 @@ define ['marionette','cs!app/core/router','backbone'],(Marionette,OLRouter,Backb
         console.log "init"
         @router = new OLRouter()
         Backbone.history.start()
+        $('#loadingDiv').hide()
     window.OL = OL
     OL
