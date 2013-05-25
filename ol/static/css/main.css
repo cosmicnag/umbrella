@@ -327,18 +327,22 @@ textarea {
     max-width: 1100px;
 }
 
-#sortCollections select {
+#sortCollections select, #sortCollections input, .reset {
+    height: 24px;
     display: inline-block;
-    background: #b5bc9a; /* formerly yellow: eecc44 or blue 778899 */
-    border: none;
+    vertical-align: top;
     padding: 1px 4px;
+    font-size: 100%;
+}
+
+#sortCollections select {
+    border: none;
+    background: #b5bc9a; /* formerly yellow: eecc44 or blue 778899 */
     -webkit-appearance: none;
     text-align: center;
     color: #fff;
-    font-size: 100%;
     width: 140px;
     border-radius: 0;
-    vertical-align: top;
     z-index: 900 !important;/* is this ok?  */
 }
     
@@ -348,7 +352,7 @@ textarea {
     
 .reset {
     background: #666;
-    padding: 2px 4px;
+    /*padding: 2px 4px;*/
     color: #fff;
     cursor: pointer;
 }

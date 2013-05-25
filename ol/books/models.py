@@ -25,6 +25,10 @@ class BaseModel(models.Model):
 class Lender(models.Model):
 	name = models.CharField(max_length=256)
 	email = models.EmailField()
+    neighbourhood = models.CharField(max_length=512, blank=True)
+    address = models.TextField(blank=True)
+    lending_policy = models.TextField(blank=True)
+    image = models.ImageField(blank=True, upload_to='lender_images')
 	users = models.ManyToManyField(User, blank=True)
 	books = models.ManyToManyField('Book', through='LenderBook', blank=True)
 	list_id = models.CharField(max_length=64)
@@ -36,6 +40,9 @@ class Lender(models.Model):
         return {
             'id': self.id,
             'name': self.name,
+            'neighbourhood': self.neighbourhood,
+            'lending_policy': self.lending_policy,
+            'imgage': self.image.url if self.image else '',
             'email': self.email
         }
 
