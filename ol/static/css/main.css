@@ -211,8 +211,9 @@ textarea {
 }
 
 #loadingDiv {
-    padding: 50px 36px;
+    padding: 40px 44px;
     font-size: 180%;
+    text-transform: lowercase;
 }
 
 .resultsLoading {
@@ -473,7 +474,8 @@ textarea {
 /* form modals */
 
 .formModal, #creditsModalBox {
-    border: 4px double #a1aabb;
+    border: 1px dashed #a1aabb;
+    /*border: 4px double #a1aabb;*/
     padding: 20px;
     margin: 0 auto;
     position: relative;
@@ -528,7 +530,7 @@ textarea {
 
 .formModal input[type="submit"] {
     width: 100%;
-    background: #79869d;
+    background: #666;
     color: #fff;
     padding: 6px 4px;
     border: none;
