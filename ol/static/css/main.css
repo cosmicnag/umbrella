@@ -297,11 +297,11 @@ textarea {
     position: relative;
 }
 
-#aboutHome a, #creditsModalBox a {
+#aboutHome a, #creditsModalBox a, #pagination a {
     color: #457c99;
 }
 
-#aboutHome a:hover, #creditsModalBox a:hover {
+#aboutHome a:hover, #creditsModalBox a:hover, #pagination a:hover {
     color: #b9ac6a;
 }
 
@@ -327,6 +327,10 @@ textarea {
     max-width: 1100px;
 }
 
+#sortCollections select, #sortCollections input {
+    width: 120px;
+}
+
 #sortCollections select, #sortCollections input, .reset {
     height: 24px;
     display: inline-block;
@@ -341,7 +345,6 @@ textarea {
     -webkit-appearance: none;
     text-align: center;
     color: #fff;
-    width: 140px;
     border-radius: 0;
     z-index: 900 !important;/* is this ok?  */
 }
@@ -359,6 +362,7 @@ textarea {
 
 #prevPage, #nextPage {
     cursor: pointer;
+    font-size: 80%;
 }
 
 .listGridView {
@@ -448,6 +452,10 @@ textarea {
     bottom: -12px;
     border: 5px solid;
     border-color: transparent #79869d #79869d transparent;
+}
+
+#pagination {
+	padding: 0 10px;
 }
 
 /* end views and filters */
@@ -674,6 +682,7 @@ textarea {
 
 #author, #genre {
     color: #fff;
+    border: none;
 }
 
 #author {
@@ -731,8 +740,16 @@ textarea {
         width: 50%;
     }
 
+}
+
+@media only screen and (max-width: 900px) {
     #sortViewsBlock {
         position: static;    
+    }
+
+    #sortCollections select, #sortCollections input, .reset {
+        display: block;
+	 width: 100%;	
     }
 }
 

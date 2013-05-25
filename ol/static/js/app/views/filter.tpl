@@ -11,16 +11,16 @@
         <!--<span class="reset" id="search">Search</span>-->
         <span class="reset" id="reset">Reset</span>
 
-        <span id="pagination">
-            <span id="prevPage">Previous Page</span> 
-            <span id="nextPage">Next Page</span>
-        </span>
         <span id="resultsLoading" style="display:none;">
             <img src="/static/img/ajax-loader.gif" />
         </span>
     <div class="clear"></div>
     </div> <!-- end sort collections  -->
 
+    <div id="pagination" class="floatLeft">
+        <a href="" id="prevPage">&lt;&lt; Prev</a> 
+        <a href="" id="nextPage">Next &gt;&gt;</a>
+    </div>
 
 
 <div class="listGridView">

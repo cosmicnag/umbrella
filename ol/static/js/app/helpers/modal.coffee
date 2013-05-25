@@ -1,7 +1,10 @@
 define ['require', 'jquery'], (requirei, $) ->
     class ModalHelper
-        
+        prevUrl: ''
+        getPrevUrl: () ->
+            @prevUrl.replace("#", "")
         showModal: (type,args...) ->
+            @prevUrl = location.hash
             @addCloseHandler()
             switch type
                 when 'signup'
@@ -16,6 +19,8 @@ define ['require', 'jquery'], (requirei, $) ->
                     require ['cs!app/ol', 'jquery', 'cs!app/views/modals/borrow','backbone'], (OL, $, BorrowModalView,Backbone) ->
                         $('.overlay').show()
                         console.log args[0]
+                        model = args[0]
+                        OL.router.navigate "borrow/" + model.get('_id')
                         OL.modal.show(new BorrowModalView({model: args[0]}))
                 when 'mail'
                     require ['cs!app/ol', 'jquery', 'cs!app/views/modals/mail','backbone'], (OL, $, MailModalView,Backbone) ->
@@ -28,13 +33,14 @@ define ['require', 'jquery'], (requirei, $) ->
 
         closeModal: () ->
             @removeCloseHandler()
-            require ['cs!app/ol','jquery'],(OL,$) ->
+            require ['cs!app/ol','jquery'],(OL,$) =>
                 OL.modal.close()
                 $('.overlay').hide()
+                OL.router.navigate(@getPrevUrl())
 
         addCloseHandler: () ->
-            $('.overlay').bind 'click', () ->
-                $('.overlay').hide()
+            $('.overlay').bind 'click', () =>
+                @closeModal()
             $('.lightBoxContent').bind 'click', (e) ->
                 e.stopPropagation()
 

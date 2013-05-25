@@ -14,5 +14,11 @@ define ['marionette','require','jquery'],(Marionette,require,$) ->
                     collection = new Lenders(lenders)
                     view = new LendersView({collection: collection})
                     OL.content.currentView.books.show view
-                
+        "borrow":(id) ->
+            require ['cs!app/models/book', 'cs!app/helpers/modal', 'cs!app/helpers/book'], (Book, modalHelper, bookHelper) ->
+                bookHelper.renderHome()
+                $.getJSON "/api/book/" + id + ".json", {}, (book) ->
+                    bookModel = new Book(book)
+                    modalHelper.showModal "borrow", bookModel
+
     }

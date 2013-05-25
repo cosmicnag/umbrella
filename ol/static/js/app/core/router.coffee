@@ -4,6 +4,7 @@ define ['marionette','cs!app/core/controller'],(Marionette,OLController) ->
         appRoutes:
             "" : "home"
             "lenders": "lenders"
+            "borrow/:id": "borrow"
             "genre/:genre/author/:author/lender/:lender/sort/:sort/query/:query": "query"
             "genre/:genre/author/:author/lender/:lender/sort/:sort": "query"
                 

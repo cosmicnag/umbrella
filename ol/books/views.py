@@ -11,7 +11,7 @@ import re
 import math
 from helpers.book import get_authors, get_genres
 from django.core.mail import send_mail
-
+from bson.objectid import ObjectId
 
 def lenders(request):
     if request.method == 'GET':
@@ -76,6 +76,22 @@ def borrow(request):
     processborrow(borrow)
     return render_to_json_response({'success':'success'})
 	
+
+def get_book(request, id):
+    connection = MongoClient()
+    db = connection.ol
+    books = db.books
+    try:
+        mongo_id = ObjectId(id)
+        book = books.find_one({'_id': mongo_id})
+        book['_id'] = str(book['_id'])
+        book_model = Book.objects.get(mongo_id=mongo_id)
+        book['lenders'] = book_model.lenders_json()
+    except:
+        book = {'error': 'book not found'}
+    return render_to_json_response(book)
+    
+
 def books(request):
     if request.method == 'GET':
         sort = request.GET.get('sort','')
