@@ -55,6 +55,7 @@ class Lender(models.Model):
 		db = connection.ol
 		books = db.books
 		authors = db.authors
+        all_keys = []
 		for book in data['entries']:
 			#ol_id = book['url'].replace("/books/", "").replace("/works/", "")
 			#b = Book(ol_id=ol_id)
@@ -76,6 +77,7 @@ class Lender(models.Model):
 					mongo_author = authors.find_one({"key":author_data['key']})
 					author_id = mongo_author and mongo_author['_id'] or authors.insert(author_data)
 					print author_id
+            all_keys.append(book_data['key'])
 			mongo_book = books.find_one({"key":book_data['key']})
             if mongo_book:
                 print "has mongo book"
@@ -97,7 +99,13 @@ class Lender(models.Model):
 			lb = LenderBook(lender=self,book=book,status=1)
 			# TODO figure out status
 			lb.save()
-		
+        #delete removed books
+   	    for b in books.find({'lenders': self.id}):
+            if b['key'] not in all_keys:
+                b['lenders'].remove(self.id)
+                if len(b['lenders']) == 0:
+                    books.remove({'_id': b['_id']})
+                
 		
 
 class Book(models.Model):

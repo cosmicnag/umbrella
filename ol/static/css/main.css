@@ -210,6 +210,9 @@ textarea {
     padding: 60px 0 0 0;
 }
 
+#loadingDiv {
+    padding: 20px 36px;
+}
 
 /* menu */
 
@@ -743,12 +746,30 @@ textarea {
 }
 
 @media only screen and (max-width: 900px) {
+    #wrapper {
+        padding: 10px;
+    }
+
     #sortViewsBlock {
         position: static;    
     }
 
+    #sortCollections {
+        float: none;
+        text-align: left;
+    }
+
     #sortCollections select, #sortCollections input, .reset {
         display: block;
+	 width: 100%;	
+        margin: 0 0 14px 0;
+    }
+
+    .tt-dropdown-menu {
+        width: 100%;
+    }
+
+    .twitter-typeahead {
 	 width: 100%;	
     }
 }
