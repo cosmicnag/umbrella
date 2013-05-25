@@ -35,7 +35,7 @@
                         </div>
 
                         <% } %>
-                        <div class="bookLinkOL"><a href="http://openlibrary.org<%= key %>">OL Link</a></div>
+                        <div class="bookLinkOL"><a href="http://openlibrary.org<%= key %>" target="_blank">OL Link</a></div>
                         <a href="javascript:void(0);" class="linkModal contactLender">Borrow</a>
                     </div> <!-- end col 75  -->
                     <div class="clear"></div>

@@ -65,11 +65,18 @@ class Lender(models.Model):
             if book_data.has_key('works') and len(book_data['works']) > 0 and not book_data.has_key('authors'):
                 work_url = "http://openlibrary.org%s.json" % book_data['works'][0]['key']
                 work_data = json.loads(urllib2.urlopen(work_url).read())
-                if work_data.has_key('authors'):
+                if work_data.has_key('author'):
+                    book_data['authors'] = [work_data['author']]
+                elif work_data.has_key('authors'):
                     book_data['authors'] = work_data['authors']
 			if book_data.has_key('authors'):
 				print book_data['authors']
-				author_keys = [a['author']['key'] for a in book_data['authors'] if a.get('author',None)]	
+                author_keys = []
+                for a in book_data['authors']:
+                    if a.has_key('key'):
+                        author_keys.append(a['key'])
+                    elif a.get('author', None):
+                        author_keys.append(a['author']['key'])
 				for author_key in author_keys:
 					author_endpoint = "http://openlibrary.org" + author_key + ".json"
 					print author_endpoint
@@ -105,7 +112,10 @@ class Lender(models.Model):
                 b['lenders'].remove(self.id)
                 if len(b['lenders']) == 0:
                     books.remove({'_id': b['_id']})
-                
+        #delete unused authors
+        for a in authors.find():
+            if books.find({'authors.author.key': a['key']}).count() == 0:
+                authors.remove({'_id': a['_id']})                
 		
 
 class Book(models.Model):

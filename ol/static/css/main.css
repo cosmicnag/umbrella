@@ -211,7 +211,13 @@ textarea {
 }
 
 #loadingDiv {
-    padding: 20px 36px;
+    padding: 50px 36px;
+    font-size: 180%;
+}
+
+.resultsLoading {
+    width: 24px;
+    display: none;
 }
 
 /* menu */
@@ -370,7 +376,7 @@ textarea {
 
 .listGridView {
     float: right;
-    margin: 4px 0;
+    margin: 0 0 4px 0;
 }
 
 .linkListView, .linkGridView, .selectSort, .linkDetailsView {
@@ -636,12 +642,13 @@ textarea {
 
 .mySelectBoxClass {
     font-size:80%;
-    height: 20px;   
+    height: 20px;  
+    padding: 4px 0 0 0; 
 }
 
-    .mySelectBoxClass:after {
+.mySelectBoxClass:after {
     content: "\02193";
-    font-size: 180%;
+    font-size: 170%;
     line-height: 0.5;
     }
 

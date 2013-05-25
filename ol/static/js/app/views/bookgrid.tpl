@@ -11,6 +11,6 @@
 <% } %>
 
 <div class="center gridBorrowOL">
-    <a class="bookLinkOL" href="http://openlibrary.org<%= key %>">OL Link</a>
+    <a class="bookLinkOL" target="_blank" href="http://openlibrary.org<%= key %>">OL Link</a>
     <a href="javascript:void(0);" class="linkModal contactLender">Borrow</a>
 </div>

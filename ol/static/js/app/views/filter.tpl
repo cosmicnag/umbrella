@@ -11,8 +11,8 @@
         <!--<span class="reset" id="search">Search</span>-->
         <span class="reset" id="reset">Reset</span>
 
-        <span id="resultsLoading" style="display:none;">
-            <img src="/static/img/ajax-loader.gif" />
+        <span id="resultsLoading">
+            <img src="/static/img/loader-umbrella-search.gif" />
         </span>
     <div class="clear"></div>
     </div> <!-- end sort collections  -->
