@@ -11,7 +11,8 @@
 <h6 class="serif">Library indexing</h6>
 <ul class="smallFont">
     <li>Sindhu Thirumalaisamy</li>
-    </li>and others</li>
+    <li>Sourav Roy</li>
+    <li>and others</li>
 </ul>
 <br>
 <h6 class="serif">Hackathons hosted by</h6>

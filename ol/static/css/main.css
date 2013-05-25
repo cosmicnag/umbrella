@@ -503,7 +503,7 @@ textarea {
 }*/
 
 .formModal label {
-    font-size: 90%;
+    font-size: 80%;
 }
 
 
@@ -736,6 +736,10 @@ textarea {
 .lender {
     border-bottom: 1px dashed #888;
     padding: 20px 0;
+}
+
+.lendersContainer {
+    padding: 0 0 10px 0;
 }
 
 /* end lenders */

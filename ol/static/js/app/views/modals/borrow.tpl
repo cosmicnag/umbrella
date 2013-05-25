@@ -14,8 +14,8 @@
             <% for (var i=0; i<lenders.length;i++) { var lender = lenders[i]; %>
             <div class="lenderContainer">
                 <p><%= lender.name %> <input type="checkbox" checked="checked" class="lenderCheckbox" id="lender<%= lender.id %>" data-id="<%= lender.id %>" /></p>
-                <p><%= lender.neighbourhood %></p>
-                <p><%= lender.lending_policy %></p>
+                <p class="smallerFont"><%= lender.neighbourhood %></p>
+                <p class="smallerFont"><%= lender.lending_policy %></p>
             </div>
             <% } %>
             </div>
