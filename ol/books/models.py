@@ -1,7 +1,7 @@
 # vi:si:et:sw=4:sts=4:ts=4
 from django.db import models
 from django.contrib.auth.models import User
-from django_hstore import hstore
+#from django_hstore import hstore
 import urllib2
 import datetime
 import json
@@ -65,8 +65,22 @@ class Lender(models.Model):
 					author_id = mongo_author and mongo_author['_id'] or authors.insert(author_data)
 					print author_id
 			mongo_book = books.find_one({"key":book_data['key']})
-			mongo_id = mongo_book and mongo_book['_id'] or books.insert(book_data)
-			book,created = Book.objects.get_or_create(mongo_id=mongo_id)
+            if mongo_book:
+                print "has mongo book"
+                if mongo_book.has_key('lenders'):
+                    book_data['lenders'] = mongo_book['lenders']
+                else:
+                    book_data['lenders'] = []
+                if self.id not in book_data['lenders']:
+                    book_data['lenders'].append(self.id)
+                books.update({'_id': mongo_book['_id']}, book_data)
+                mongo_id = mongo_book['_id']
+            else:
+                print "does not have mongo book"
+                book_data['lenders'] = [self.id]
+			    mongo_id = books.insert(book_data)
+
+			book,created = Book.objects.get_or_create(mongo_id=str(mongo_id))
 			book.save()
 			lb = LenderBook(lender=self,book=book,status=1)
 			# TODO figure out status

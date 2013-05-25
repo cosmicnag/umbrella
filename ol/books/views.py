@@ -86,6 +86,8 @@ def books(request):
         author = request.GET.get("author", None)
         genre = request.GET.get("genre", None)
         lender = request.GET.get("lender", None)
+        if lender:
+            lender = int(lender)
         page = int(request.GET.get("page", "1"))
         per_page = int(request.GET.get("per_page", "50"))
         q = request.GET.get("q", None)
@@ -109,6 +111,8 @@ def books(request):
             find['authors.author.key'] = author
         if genre:
             find['subjects'] = genre
+        if lender:
+            find['lenders'] = lender
         count = books.find(find).count()
         pages = int(math.ceil(count / (per_page + .0)))
         if page > pages and pages != 0:
