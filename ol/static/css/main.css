@@ -216,9 +216,9 @@ textarea {
     text-transform: lowercase;
 }
 
-.resultsLoading {
-    width: 24px;
-    display: none;
+#resultsLoading {
+    /*width: 24px;*/
+    visibility: hidden;
 }
 
 /* menu */
@@ -307,11 +307,11 @@ textarea {
     position: relative;
 }
 
-#aboutHome a, #creditsModalBox a, #pagination a {
+#aboutHome a, #creditsModalBox a, #pagination a, .linkStyling {
     color: #457c99;
 }
 
-#aboutHome a:hover, #creditsModalBox a:hover, #pagination a:hover {
+#aboutHome a:hover, #creditsModalBox a:hover, #pagination a:hover, .linkStyling:hover {
     color: #b9ac6a;
 }
 
@@ -519,7 +519,7 @@ textarea {
     display: inline-block;
 }
 
-.formModal input, .formModal textarea {
+.formModal input[type="text"], .formModal textarea {
     margin-bottom: 10px;
     min-width: 180px;
 }
@@ -730,6 +730,15 @@ textarea {
 
 
 /* autocomplete styling */
+
+/* lenders */
+
+.lender {
+    border-bottom: 1px dashed #888;
+    padding: 20px 0;
+}
+
+/* end lenders */
 
 
 /* MEDIA QUERIES */

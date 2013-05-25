@@ -37,12 +37,18 @@ class Lender(models.Model):
 		return self.name
 
     def get_json(self):
+        connection = MongoClient()
+        db = connection.ol
+        books = db.books
+        authors = db.authors
+        count = books.find({'lenders': self.id}).count()
         return {
             'id': self.id,
             'name': self.name,
             'neighbourhood': self.neighbourhood,
             'lending_policy': self.lending_policy,
-            'imgage': self.image.url if self.image else '',
+            'count': count,
+            'image': self.image.url if self.image else '',
             'email': self.email
         }
 

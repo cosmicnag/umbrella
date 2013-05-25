@@ -2,7 +2,7 @@
 <div id="sortCollections">
     <input type="" id="querystring" placeholder="Find" class="fontCondensed">
     <input type="text" id="author" placeholder="Author" />
-    <input type="text" id="genre" placeholder="Genre" />
+    <input type="text" id="genre" placeholder="Subjects" />
  
         <select id="lender">
             <option value="all">All Lenders</option>

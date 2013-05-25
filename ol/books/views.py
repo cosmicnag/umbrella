@@ -15,7 +15,11 @@ from bson.objectid import ObjectId
 
 def lenders(request):
     if request.method == 'GET':
-        lenders = list(Lender.objects.all().values())
+        id = request.GET.get('id', None)
+        if id:
+            lenders = [Lender.objects.get(pk=id).get_json()]
+        else:
+            lenders = [l.get_json() for l in Lender.objects.all()]
         return render_to_json_response(lenders,status=200)
     return render_to_json_response([],status=501)
 
@@ -87,19 +91,6 @@ def get_book(request, id):
         book['_id'] = str(book['_id'])
         book_model = Book.objects.get(mongo_id=mongo_id)
         book['lenders'] = book_model.lenders_json()
-        book['author_names'] = [] #FIXME: move to helper function or so
-        if book.has_key('authors'):
-            for a in book['authors']:
-                if a.has_key('author'):
-                    key = a['author']['key']
-                elif a.has_key('type') and a['type'].has_key('author'):
-                    key = a['type']['author']['key']
-                else:
-                    key = None
-                #import pdb; pdb.set_trace()
-                if key:
-                    author = db.authors.find_one({'key': key})
-                    book['author_names'].append(author['name'])
     except:
         book = {'error': 'book not found'}
     return render_to_json_response(book)

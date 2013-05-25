@@ -15,10 +15,10 @@ define ['backbone','marionette','require','jquery','cs!app/ol','cs!app/core/glob
         OL.router.navigate "genre/#{genre}/author/#{author}/lender/#{lender}/sort/#{sort}",{trigger:true}
 
   commands.addHandler "search:doLoading", () ->
-    $('#resultsLoading').show()
+    $('#resultsLoading').css({'visibility': 'visible'})
 
   commands.addHandler "search:stopLoading", () ->
-    $('#resultsLoading').hide()
+    $('#resultsLoading').css({'visibility': 'hidden'})
 
   commands.addHandler "modal", (type,args...)=>
     require ["cs!app/helpers/modal"], (modalHelper) =>
