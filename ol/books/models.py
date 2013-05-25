@@ -74,7 +74,9 @@ class Lender(models.Model):
                 author_keys = []
                 for a in book_data['authors']:
                     if a.has_key('key'):
+                        a['author'] = {'key': a['key']}
                         author_keys.append(a['key'])
+                        a.pop('key')
                     elif a.get('author', None):
                         author_keys.append(a['author']['key'])
 				for author_key in author_keys:
@@ -82,7 +84,11 @@ class Lender(models.Model):
 					print author_endpoint
 					author_data = json.loads(urllib2.urlopen(author_endpoint).read())
 					mongo_author = authors.find_one({"key":author_data['key']})
-					author_id = mongo_author and mongo_author['_id'] or authors.insert(author_data)
+                    if mongo_author and mongo_author['_id']:
+                        authors.update({'_id': mongo_author['_id']}, author_data)
+                        author_id = mongo_author['_id']
+                    else:
+                        author_id = authors.insert(author_data)
 					print author_id
             all_keys.append(book_data['key'])
 			mongo_book = books.find_one({"key":book_data['key']})

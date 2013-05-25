@@ -14,6 +14,9 @@
                         <% if (typeof(subtitle) != 'undefined') { %>
                         <div class="bookAuthor"><em><%= subtitle %></em></div>
                         <% } %>
+                        <% if (author_names.length > 0) { var names = author_names.join(','); %>
+                            <div class="bookAuthor"><%= names %></div>
+                        <% } %>
                         <% if (typeof(publish_date) != 'undefined') { %>
                         <div class="bookDate"><%= publish_date %></div>
                         <% } %>

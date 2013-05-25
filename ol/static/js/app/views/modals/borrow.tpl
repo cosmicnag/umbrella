@@ -1,6 +1,11 @@
 <form action="" class="formModal" id="formBorrow">
     <h5 class="serif"> Borrow</h5>
     <p class="serif"> <%= title %> </p>
+    <% if (author_names.length > 0) { var names = author_names.join(','); %>
+        <p class="bookAuthor"><%= names %></p>
+    <% } %>
+
+
     <br>
     <label for="">Message:</label> <br> <textarea id="message" /><br />
     <p>
