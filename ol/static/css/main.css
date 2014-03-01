@@ -734,8 +734,8 @@ textarea {
 /* lenders */
 
 .lender {
-    border-bottom: 1px dashed #888;
-    padding: 20px 0;
+    border-bottom: 1px dashed #999;
+    padding: 16px 0;
 }
 
 .lendersContainer {
@@ -743,6 +743,12 @@ textarea {
 }
 
 /* end lenders */
+
+.faqItem {
+    font-size: 90%;
+    border-bottom: 1px dashed #999;
+    padding: 16px 0;
+}
 
 
 /* MEDIA QUERIES */

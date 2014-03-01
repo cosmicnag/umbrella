@@ -11,7 +11,7 @@
             <div id="searchMenu">
                 <!--<input type="" id="querystring" placeholder="Find">-->
                 <ul id="menu">
-                    <li><a href="#" id="aboutBtn">FAQs</a></li>
+                    <li><a href="#" id="aboutBtn">FAQ</a></li>
                     <li><a href="/#lenders" id="lendersBtn">Lenders</a></li>
                     <li class="userBtns">
                     <a class="linkModal" id="signupBtn" href="javascript:void(0);">Sign-up</a> |
