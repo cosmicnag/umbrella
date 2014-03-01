@@ -15,7 +15,4 @@ define ['marionette', 'jquery', 'cs!app/core/mediator', 'tpl!app/views/modals/ma
             }
             $.post url, data, (response) ->
                 responseObj = JSON.parse response
-                if responseObj.success
-                    mediator.commands.execute "closemodal"
-                else
-                    alert responseObj.error
+                mediator.commands.execute "closemodal"
