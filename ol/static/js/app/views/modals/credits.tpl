@@ -12,6 +12,8 @@
 <ul class="smallFont">
     <li>Sindhu Thirumalaisamy</li>
     <li>Sourav Roy</li>
+    <li>Prerna Bishnoi</li>
+    <li>Ashok Sukumaran</li>
     <li>and others</li>
 </ul>
 <br>
