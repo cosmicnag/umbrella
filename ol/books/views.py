@@ -109,7 +109,7 @@ def books(request):
         if lender:
             lender = int(lender)
         page = int(request.GET.get("page", "1"))
-        per_page = int(request.GET.get("per_page", "50"))
+        per_page = int(request.GET.get("per_page", "48"))
         q = request.GET.get("q", None)
         connection = MongoClient()
         db = connection.ol
