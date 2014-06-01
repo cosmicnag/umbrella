@@ -43,10 +43,10 @@ define ['marionette','tpl!app/views/menu.tpl', 'cs!app/helpers/book', 'cs!app/co
 
         lenders: (e) ->
             e.preventDefault()
-            OL = require('app/ol')
+            OL = require('cs!app/ol')
             OL.router.navigate("lenders", {trigger: true})
 
         about: (e) ->
             e.preventDefault()
-            OL = require('app/ol')
+            OL = require('cs!app/ol')
             OL.router.navigate("about", {trigger: true})

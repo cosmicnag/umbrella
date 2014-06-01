@@ -1,4 +1,4 @@
-define ['marionette','jquery','app/ol','tpl!app/views/bookgrid.tpl','tpl!app/views/booklist.tpl','tpl!app/views/bookdetail.tpl','cs!app/core/mediator'],(Marionette,$,OL,gridtemplate,listtemplate,detailtemplate,mediator) ->
+define ['marionette','jquery','cs!app/ol','tpl!app/views/bookgrid.tpl','tpl!app/views/booklist.tpl','tpl!app/views/bookdetail.tpl','cs!app/core/mediator'],(Marionette,$,OL,gridtemplate,listtemplate,detailtemplate,mediator) ->
 
     class BookBaseView extends Marionette.ItemView
         events:
