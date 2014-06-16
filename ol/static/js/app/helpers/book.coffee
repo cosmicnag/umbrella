@@ -30,11 +30,12 @@ define ['cs!app/ol','cs!app/views/menu','cs!app/views/layouts/content','cs!app/v
                 sort: sort
             }
             OL.collections.books = books = new Books [], queryObj
-            
+           
+            mediator.commands.execute "search:doLoading"
             #mediator.events.trigger "search:queried", queryObj
             books.fetch {
                 success:(collection) =>
-                        
+                    mediator.commands.execute "search:stopLoading"
                     OL.content.currentView.books.show new BooksView({collection:books})
                 }
         getFilterData:()->

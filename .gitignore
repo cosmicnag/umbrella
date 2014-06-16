@@ -8,3 +8,5 @@ local/
 share/
 tmp/
 src/
+ol/ol/static/
+ol/media/

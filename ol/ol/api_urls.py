@@ -3,6 +3,7 @@ from django.conf.urls import patterns, include, url
 urlpatterns = patterns('books.views',
     url(r'^lenders', 'lenders'),
     url(r'^books', 'books'),
+    url(r'^book/(?P<id>.*?).json$', 'get_book'),
     url(r'^authors/(?P<q>.*?).json$', 'authors'),
     url(r'^genres/(?P<q>.*?).json$', 'genres'),
     url(r'^signin', 'signin'),

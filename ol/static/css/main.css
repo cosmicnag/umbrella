@@ -210,6 +210,16 @@ textarea {
     padding: 60px 0 0 0;
 }
 
+#loadingDiv {
+    padding: 40px 44px;
+    font-size: 180%;
+    text-transform: lowercase;
+}
+
+#resultsLoading {
+    /*width: 24px;*/
+    visibility: hidden;
+}
 
 /* menu */
 
@@ -297,11 +307,11 @@ textarea {
     position: relative;
 }
 
-#aboutHome a, #creditsModalBox a {
+#aboutHome a, #creditsModalBox a, #pagination a, .linkStyling {
     color: #457c99;
 }
 
-#aboutHome a:hover, #creditsModalBox a:hover {
+#aboutHome a:hover, #creditsModalBox a:hover, #pagination a:hover, .linkStyling:hover {
     color: #b9ac6a;
 }
 
@@ -327,16 +337,25 @@ textarea {
     max-width: 1100px;
 }
 
-#sortCollections select {
+#sortCollections select, #sortCollections input {
+    width: 120px;
+}
+
+#sortCollections select, #sortCollections input, .reset {
+    height: 24px;
     display: inline-block;
-    background: #b5bc9a; /* formerly yellow: eecc44 or blue 778899 */
-    border: none;
+    vertical-align: top;
     padding: 1px 4px;
+    font-size: 100%;
+}
+
+#sortCollections select {
+    border: none;
+    background: #b5bc9a; /* formerly yellow: eecc44 or blue 778899 */
     -webkit-appearance: none;
     text-align: center;
     color: #fff;
-    font-size: 100%;
-    width: 140px;
+    border-radius: 0;
     z-index: 900 !important;/* is this ok?  */
 }
     
@@ -346,18 +365,19 @@ textarea {
     
 .reset {
     background: #666;
-    padding: 2px 4px;
+    /*padding: 2px 4px;*/
     color: #fff;
     cursor: pointer;
 }
 
 #prevPage, #nextPage {
     cursor: pointer;
+    font-size: 80%;
 }
 
 .listGridView {
     float: right;
-    margin: 4px 0;
+    margin: 0 0 4px 0;
 }
 
 .linkListView, .linkGridView, .selectSort, .linkDetailsView {
@@ -444,13 +464,18 @@ textarea {
     border-color: transparent #79869d #79869d transparent;
 }
 
+#pagination {
+	padding: 0 10px;
+}
+
 /* end views and filters */
 
 
 /* form modals */
 
 .formModal, #creditsModalBox {
-    border: 4px double #a1aabb;
+    border: 1px dashed #a1aabb;
+    /*border: 4px double #a1aabb;*/
     padding: 20px;
     margin: 0 auto;
     position: relative;
@@ -478,7 +503,7 @@ textarea {
 }*/
 
 .formModal label {
-    font-size: 90%;
+    font-size: 80%;
 }
 
 
@@ -494,7 +519,7 @@ textarea {
     display: inline-block;
 }
 
-.formModal input, .formModal textarea {
+.formModal input[type="text"], .formModal textarea {
     margin-bottom: 10px;
     min-width: 180px;
 }
@@ -505,7 +530,7 @@ textarea {
 
 .formModal input[type="submit"] {
     width: 100%;
-    background: #79869d;
+    background: #666;
     color: #fff;
     padding: 6px 4px;
     border: none;
@@ -619,12 +644,13 @@ textarea {
 
 .mySelectBoxClass {
     font-size:80%;
-    height: 20px;   
+    height: 20px;  
+    padding: 4px 0 0 0; 
 }
 
-    .mySelectBoxClass:after {
+.mySelectBoxClass:after {
     content: "\02193";
-    font-size: 180%;
+    font-size: 170%;
     line-height: 0.5;
     }
 
@@ -668,6 +694,7 @@ textarea {
 
 #author, #genre {
     color: #fff;
+    border: none;
 }
 
 #author {
@@ -704,6 +731,25 @@ textarea {
 
 /* autocomplete styling */
 
+/* lenders */
+
+.lender {
+    border-bottom: 1px dashed #999;
+    padding: 16px 0;
+}
+
+.lendersContainer {
+    padding: 0 0 10px 0;
+}
+
+/* end lenders */
+
+.faqItem {
+    font-size: 90%;
+    border-bottom: 1px dashed #999;
+    padding: 16px 0;
+}
+
 
 /* MEDIA QUERIES */
 
@@ -725,8 +771,34 @@ textarea {
         width: 50%;
     }
 
+}
+
+@media only screen and (max-width: 900px) {
+    #wrapper {
+        padding: 10px;
+    }
+
     #sortViewsBlock {
         position: static;    
+    }
+
+    #sortCollections {
+        float: none;
+        text-align: left;
+    }
+
+    #sortCollections select, #sortCollections input, .reset {
+        display: block;
+	 width: 100%;	
+        margin: 0 0 14px 0;
+    }
+
+    .tt-dropdown-menu {
+        width: 100%;
+    }
+
+    .twitter-typeahead {
+	 width: 100%;	
     }
 }
 
@@ -734,6 +806,11 @@ textarea {
     #menuBlock, #browseGridView .col25, .col25, .col30, .col70, .col75, .col50 {
         width: 100%;
         float: none;    
+    }
+
+    #browseGridView .col25 {
+    	width: 50%;
+	float: left;
     }
 
     #menuBlock {

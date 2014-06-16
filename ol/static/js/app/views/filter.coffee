@@ -87,9 +87,11 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','typeahea
             mediator.events.trigger "filters:view",'list'
         showgridview:() ->
             mediator.events.trigger "filters:view",'grid'
-        nextPage:() ->
+        nextPage:(e) ->
+            e.preventDefault()
             OL.collections.books.requestNextPage()
-        prevPage:() ->
+        prevPage:(e) ->
+            e.preventDefault()
             OL.collections.books.requestPreviousPage()
 
         resetQuery: ()->
@@ -97,7 +99,7 @@ define ['marionette','tpl!app/views/filter.tpl','cs!app/core/mediator','typeahea
             @ui.genre.val('')
             @ui.lender.val('')
             @ui.sort.val('')
-            @ui.search.val('')
+            @ui.querystring.val('')
             @fireQuery()
 
     FilterView

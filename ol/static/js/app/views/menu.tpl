@@ -3,7 +3,7 @@
         <div id="logo"><a href="">
 	umbrella library
 	<!--<img src="/static/svg/umbrella.svg" alt="" class="umbrellaLogo">-->
-	<img src="/static/img/umbrella.gif" alt="" class="umbrellaLogo">
+	<img src="/static/img/umbrellafinal.gif" alt="" class="umbrellaLogo">
 	
 	</a></div>
         
@@ -11,8 +11,8 @@
             <div id="searchMenu">
                 <!--<input type="" id="querystring" placeholder="Find">-->
                 <ul id="menu">
-                    <li><a href="#">About</a></li>
-                    <li><a href="lenders.html">Lenders</a></li>
+                    <li><a href="#" id="aboutBtn">FAQ</a></li>
+                    <li><a href="/#lenders" id="lendersBtn">Lenders</a></li>
                     <li class="userBtns">
                     <a class="linkModal" id="signupBtn" href="javascript:void(0);">Sign-up</a> |
                     <a href="javascript:void(0);" id="signinBtn"> Sign-In</a></li>

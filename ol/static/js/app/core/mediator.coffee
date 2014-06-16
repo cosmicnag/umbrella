@@ -1,4 +1,4 @@
-define ['backbone','marionette','require','cs!app/ol','cs!app/core/globals'],(Backbone,Marionette,require,OL,globals) ->
+define ['backbone','marionette','require','jquery','cs!app/ol','cs!app/core/globals'],(Backbone,Marionette,require,$,OL,globals) ->
   events = new Backbone.Wreqr.EventAggregator()
   commands = new Backbone.Wreqr.Commands()
   requests = new Backbone.Wreqr.RequestResponse()
@@ -14,6 +14,11 @@ define ['backbone','marionette','require','cs!app/ol','cs!app/core/globals'],(Ba
     else
         OL.router.navigate "genre/#{genre}/author/#{author}/lender/#{lender}/sort/#{sort}",{trigger:true}
 
+  commands.addHandler "search:doLoading", () ->
+    $('#resultsLoading').css({'visibility': 'visible'})
+
+  commands.addHandler "search:stopLoading", () ->
+    $('#resultsLoading').css({'visibility': 'hidden'})
 
   commands.addHandler "modal", (type,args...)=>
     require ["cs!app/helpers/modal"], (modalHelper) =>

@@ -1,5 +1,5 @@
 require.config({
-    urlArgs: 'cb=' + Math.random(),
+    //urlArgs: 'cb=' + Math.random(),
     waitSeconds: 120,
     paths:{
         // RequireJS plugin

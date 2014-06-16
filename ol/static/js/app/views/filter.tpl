@@ -2,7 +2,7 @@
 <div id="sortCollections">
     <input type="" id="querystring" placeholder="Find" class="fontCondensed">
     <input type="text" id="author" placeholder="Author" />
-    <input type="text" id="genre" placeholder="Genre" />
+    <input type="text" id="genre" placeholder="Subjects" />
  
         <select id="lender">
             <option value="all">All Lenders</option>
@@ -11,13 +11,16 @@
         <!--<span class="reset" id="search">Search</span>-->
         <span class="reset" id="reset">Reset</span>
 
-        <span id="pagination">
-            <span id="prevPage">&lt;</span> 
-            <span id="nextPage">&gt;</span>
+        <span id="resultsLoading">
+            <img src="/static/img/loader-umbrella-search.gif" />
         </span>
     <div class="clear"></div>
     </div> <!-- end sort collections  -->
 
+    <div id="pagination" class="floatLeft">
+        <a href="" id="prevPage">&lt;&lt; Prev</a> 
+        <a href="" id="nextPage">Next &gt;&gt;</a>
+    </div>
 
 
 <div class="listGridView">

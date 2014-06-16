@@ -28,3 +28,5 @@ def get_genres(q):
     #results = list(books.distinct('subjects'))
     results = db.command({'distinct': 'books', 'key': 'subjects', 'query': {'subjects': regex}})['values']
     return map(lambda x: {'tokens': [x], 'value': x}, results)
+
+    
